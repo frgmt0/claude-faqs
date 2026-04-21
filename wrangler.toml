@@ -4,8 +4,8 @@ compatibility_date = "2026-03-10"
 workers_dev = true
 
 [[routes]]
-pattern = "api.kcodes.me/claude-faqs/*"
-zone_name = "kcodes.me"
+pattern = "api.frgmt.xyz"
+custom_domain = true
 
 [observability]
 enabled = true

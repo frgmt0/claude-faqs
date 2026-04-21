@@ -1,6 +1,6 @@
 # Claude FAQ API
 
-Base URL: `https://api.kcodes.me/claude-faqs/v1`
+Base URL: `https://api.frgmt.xyz/claude-faqs/v1`
 
 This API serves the markdown FAQ corpus as structured JSON for bots and internal tools.
 
@@ -17,7 +17,7 @@ Example:
 
 ```bash
 curl -H "Authorization: Bearer cfaq_your_key_here" \
-  https://api.kcodes.me/claude-faqs/v1/categories
+  https://api.frgmt.xyz/claude-faqs/v1/categories
 ```
 
 ## Rate-limit headers
@@ -118,7 +118,7 @@ Example:
 
 ```bash
 curl -H "Authorization: Bearer cfaq_your_key_here" \
-  "https://api.kcodes.me/claude-faqs/v1/entries?category=billing&limit=5"
+  "https://api.frgmt.xyz/claude-faqs/v1/entries?category=billing&limit=5"
 ```
 
 Summary entries include:
@@ -158,7 +158,7 @@ Example:
 
 ```bash
 curl -H "Authorization: Bearer cfaq_your_key_here" \
-  "https://api.kcodes.me/claude-faqs/v1/search?q=billing+refund&mode=semantic"
+  "https://api.frgmt.xyz/claude-faqs/v1/search?q=billing+refund&mode=semantic"
 ```
 
 Default response shape:
@@ -196,7 +196,7 @@ Example:
 
 ```bash
 curl -H "Authorization: Bearer cfaq_your_key_here" \
-  https://api.kcodes.me/claude-faqs/v1/account-banned
+  https://api.frgmt.xyz/claude-faqs/v1/account-banned
 ```
 
 If the slug does not exist, the API returns a 404 with `did_you_mean` suggestions.
@@ -238,7 +238,7 @@ Input options:
 
 ```bash
 curl -H "Authorization: Bearer cfaq_your_key_here" \
-  "https://api.kcodes.me/claude-faqs/v1/ask?q=how+do+I+request+a+refund"
+  "https://api.frgmt.xyz/claude-faqs/v1/ask?q=how+do+I+request+a+refund"
 ```
 
 or
@@ -248,7 +248,7 @@ curl -X POST \
   -H "Authorization: Bearer cfaq_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{"question":"how do I request a refund"}' \
-  https://api.kcodes.me/claude-faqs/v1/ask
+  https://api.frgmt.xyz/claude-faqs/v1/ask
 ```
 
 Response shape:
