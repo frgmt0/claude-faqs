@@ -1,0 +1,42 @@
+name: API bug or integration problem
+description: Something about the API itself is broken or behaving unexpectedly
+title: "[API] "
+labels:
+  - bug
+  - needs-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: check the [troubleshooting section of the API docs](https://github.com/frgmt0/claude-faqs/blob/main/docs/API.md#troubleshooting--common-pain-points) — auth header format, rate-limit headers, and search-mode quirks cover most reports.
+
+        **Never paste your API key in an issue.** Redact it (`cfaq_abc...`).
+  - type: input
+    id: endpoint
+    attributes:
+      label: Endpoint
+      placeholder: GET /search?q=...&mode=semantic
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      description: Status code and response body (redact your key). Include the X-RateLimit-* headers if relevant.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: A curl command (key redacted) that triggers it.
+      render: shell
+    validations:
+      required: false

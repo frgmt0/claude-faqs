@@ -1,0 +1,37 @@
+name: Fix an FAQ answer
+description: An existing answer is wrong, stale, or has a dead link
+title: "[Fix] "
+labels:
+  - outdated
+  - needs-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Found a wrong price, retired model name, dead link, or anything else that has drifted from reality? This is the most valuable kind of report we get.
+
+        If you're comfortable with PRs, even better: every answer is one YAML file under `faq-content/` — fixing it directly is usually a two-line change.
+  - type: input
+    id: slug
+    attributes:
+      label: Which entry?
+      description: The slug (filename) or the question text. Find slugs via the API or the faq-content/ directory.
+      placeholder: claude-max-cost
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What's wrong?
+      description: Quote the part of the answer that is incorrect or outdated.
+      placeholder: It says Max 5x is $100/month but the pricing page now shows...
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What's correct?
+      description: The corrected fact, ideally with an official Anthropic source URL.
+      placeholder: "https://claude.com/pricing now shows..."
+    validations:
+      required: true

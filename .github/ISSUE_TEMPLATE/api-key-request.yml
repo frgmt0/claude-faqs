@@ -1,0 +1,33 @@
+name: Request an API key
+description: Get a key to use the FAQ API in your bot or tool
+title: "[Key request] "
+labels:
+  - question
+  - needs-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keys are free for community projects. Tell us what you're building so we can size the rate limit correctly. Keys are delivered via a private channel (Discord DM) — never posted in the issue.
+  - type: input
+    id: project
+    attributes:
+      label: What are you building?
+      placeholder: A /faq slash command for the XYZ Discord server (~3k members)
+    validations:
+      required: true
+  - type: input
+    id: traffic
+    attributes:
+      label: Expected traffic
+      placeholder: Maybe 200 lookups/day
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: How do we reach you privately?
+      description: Discord username is easiest.
+      placeholder: username#0000
+    validations:
+      required: true

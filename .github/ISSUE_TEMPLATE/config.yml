@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: API Documentation
-    url: https://github.com/konacodes/claude-faqs/blob/main/docs/API.md
-    about: Read the API docs before opening an implementation question.
+    url: https://github.com/frgmt0/claude-faqs/blob/main/docs/API.md
+    about: Read the API docs (including the troubleshooting section) before opening an implementation question.
   - name: Anthropic Support
     url: https://support.claude.com
-    about: Use official Anthropic support for account, billing, or product-access issues.
+    about: Use official Anthropic support for account, billing, or product-access issues. We are a community project and cannot help with your Anthropic account.

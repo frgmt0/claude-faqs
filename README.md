@@ -52,6 +52,8 @@ New categories and entries are auto-discovered — you do not need to register f
 
 ## Contributing a FAQ update
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide (why, what, and how — most contributions are one YAML file) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards. The short version:
+
 1. Fork the repo and create a branch.
 2. Add or edit a `faq-content/<category>/<slug>.yaml` file.
 3. Run the local checks.

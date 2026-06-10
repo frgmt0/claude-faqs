@@ -1,30 +1,28 @@
 ## Summary
 
-Describe what changed and why.
+Describe what changed and why. One or two sentences is fine.
 
-## What changed
+## Type of change
 
-- [ ] Added a new FAQ
-- [ ] Improved an existing answer
-- [ ] Updated outdated sources or verification dates
-- [ ] Changed parser, search, or Worker behavior
-- [ ] Updated contributor docs or templates
+- [ ] New FAQ entry (`faq-content/<category>/<slug>.yaml`)
+- [ ] Fixed or improved an existing answer
+- [ ] Updated stale facts, sources, or `last_verified` dates
+- [ ] Worker / search / API change
+- [ ] Docs, templates, or tooling
 
-## Files touched
+## Content checklist (skip for code-only PRs)
 
-List the important files or directories you changed.
-
-## Source check
-
-- [ ] I used official Anthropic sources where the answer is time-sensitive
-- [ ] I noted clearly when Anthropic does not document something publicly
+- [ ] The filename is a short, stable, kebab-case slug (it becomes the API slug — renames break bots)
+- [ ] Time-sensitive claims (pricing, plans, limits, policy) cite an official Anthropic source in `sources:`
+- [ ] `last_verified:` is set to today for anything I verified
+- [ ] I said plainly where Anthropic does not document something publicly — no invented SLAs or promises
+- [ ] No `docs.anthropic.com` links (use `code.claude.com/docs` or `platform.claude.com/docs`)
 
 ## Validation
 
-- [ ] `bun run check:faq`
-- [ ] `bun run build:faq`
-- [ ] `bun run typecheck`
+- [ ] `bun run check:faq` passes
+- [ ] `bun run typecheck` passes (code changes only)
 
 ## Credit
 
-If you want answer credit in the markdown, note the display name to use after `Answered by:`.
+If you want contributor credit on the entry, add `answered_by: YourName` in the YAML — and feel free to add yourself to `WALL_OF_FAME.md` on your first merged PR.
