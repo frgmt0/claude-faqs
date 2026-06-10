@@ -1,0 +1,9 @@
+question: I entered my email address but I haven't received my verification email. What should I try?
+answer: |
+  Anthropic's official guidance here is short: confirm the email address is correct, use the retry option, and check spam or filtered folders. That sounds basic, but it covers the most common failure modes.
+
+  If the code still does not arrive, stop retrying over and over and move to support. Repeated attempts can make the situation harder to reason about because you no longer know whether you are waiting on an old email or a new one.
+subcategory: Access and Login
+sources:
+  - https://support.claude.com/en/articles/7993562-i-entered-my-email-address-but-i-haven-t-received-my-login-code
+last_verified: 2026-03-10

@@ -1,0 +1,10 @@
+question: What's the fix for the bun version issue or runtime crashes?
+answer: |
+  Anthropic's current public install path is Node and npm, not bun. So if a specific bun build is crashing, the official answer is not "wait for a magic bun fix" but "use the supported install path and verify with doctor."
+
+  If you are chasing a version-specific runtime crash, narrow the variables. Switch to the documented Node/npm install, retest, and only then decide whether you are dealing with a Claude Code bug or a local runtime mismatch.
+subcategory: Installation and Setup
+sources:
+  - https://code.claude.com/docs/en/troubleshooting
+  - https://code.claude.com/docs/en/overview
+last_verified: 2026-03-10

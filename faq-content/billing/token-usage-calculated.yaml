@@ -1,0 +1,10 @@
+question: How is token usage calculated?
+answer: |
+  Anthropic bills and rate-limits the API by tokens. In plain language, that means your input, the model's output, and in some cases cached or long-context behavior all contribute to usage.
+
+  If you need predictability, use the token-counting API before sending expensive requests. That is the official way to estimate size before you commit to the full call.
+subcategory: Plans and Pricing
+sources:
+  - https://platform.claude.com/docs/en/api/messages
+  - https://platform.claude.com/docs/en/build-with-claude/token-counting
+last_verified: 2026-03-10

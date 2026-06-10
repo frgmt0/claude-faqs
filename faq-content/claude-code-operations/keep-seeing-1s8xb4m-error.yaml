@@ -1,0 +1,10 @@
+question: What should I do if I keep seeing the 1S8XB4M error?
+answer: |
+  Anthropic does not publish a public support article that maps the `1S8XB4M` code to one stable root cause. So the honest answer is that this is not a documented user-fixable code today.
+
+  Treat it like an opaque service or account error: check [status.anthropic.com](https://status.anthropic.com), retry in a fresh session, and then report the exact code to Support with timestamps and product context. That gives Anthropic something they can trace internally.
+subcategory: Stability and Errors
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+  - https://status.anthropic.com
+last_verified: 2026-03-10

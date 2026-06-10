@@ -1,0 +1,13 @@
+question: Why was my account charged $850 in 2 hours?
+answer: |
+  Anthropic's official docs do not publish a special article for "I was charged hundreds of dollars unexpectedly," so you have to separate two cases: subscription billing and API or extra-usage billing.
+
+  For API usage, Anthropic bills based on successful usage and exposes billing information in the Console. For paid Claude plans, extra usage can also create charges beyond the included subscription if it has been enabled. So the first job is to identify which product generated the charge: Claude subscription, extra usage, or API.
+
+  If the amount looks wrong, gather timestamps, invoice screenshots, workspace or org name, and any evidence of loops or automation gone wrong, then open Support immediately. If you also start a bank dispute, know that Anthropic's refund article says support cannot process a refund while that dispute is pending.
+subcategory: Charges, Refunds, and Support
+sources:
+  - https://support.claude.com/en/articles/12386328-requesting-a-refund-for-a-paid-claude-plan
+  - https://support.claude.com/en/articles/8114526-how-will-i-be-billed
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

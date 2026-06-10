@@ -1,0 +1,10 @@
+question: Can I automate permission acceptance in a community bot?
+answer: |
+  If you mean Claude Code's local permission prompts, yes, Anthropic documents controlled auto-allow settings. If you mean Discord server permissions, no, that is the wrong layer. Discord roles and integration permissions are handled by Discord and server admins.
+
+  Keep those two concepts separate. Local agent execution permissions and community access-control permissions are not the same problem.
+subcategory: Community Access and Permissions
+sources:
+  - https://code.claude.com/docs/en/settings
+  - https://code.claude.com/docs/en/security
+last_verified: 2026-03-10

@@ -1,0 +1,10 @@
+question: What are the best practices for remote control and automation?
+answer: |
+  The official docs show two strong paths: operate Claude Code directly on the machine that owns the repo, or automate through CI and the SDK. In both cases, the theme is the same: make the environment explicit, use versioned project instructions, and keep credentials in secrets rather than in prompts or scripts.
+
+  If you are automating, decide what Claude is allowed to do before you scale it. Good automation is mostly good guardrails.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/remote-control
+  - https://code.claude.com/docs/en/github-actions
+last_verified: 2026-03-10

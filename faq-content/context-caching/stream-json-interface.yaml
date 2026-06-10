@@ -1,0 +1,9 @@
+question: What is the stream-json interface?
+answer: |
+  Anthropic's current streaming docs focus on SSE event streams rather than a separate product named `stream-json`. If you are trying to get machine-readable partial output, the key official concepts are structured content blocks and streamed events, not a special standalone JSON stream protocol page.
+
+  So if someone says "stream-json," treat that as implementation shorthand unless they can point to a specific SDK helper.
+subcategory: Streaming
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/streaming
+last_verified: 2026-03-10

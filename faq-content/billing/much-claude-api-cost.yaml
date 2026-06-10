@@ -1,0 +1,17 @@
+question: How much does Claude API cost?
+answer: |
+  Current per-million-token prices (input/output) as of June 2026:
+
+  - Claude Fable 5: $10 / $50
+  - Claude Opus 4.8: $5 / $25
+  - Claude Sonnet 4.6: $3 / $15
+  - Claude Haiku 4.5: $1 / $5
+
+  Modifiers that change the real bill: prompt caching (cache reads are 0.1x input price; 5-minute cache writes 1.25x; 1-hour writes 2x), the Batch API (50% off input and output), and fast mode on Opus 4.8 (research preview, $10/$50). The 1M context window on Fable 5, Opus 4.6+, and Sonnet 4.6 is included at standard pricing with no long-context surcharge.
+
+  If you are trying to estimate spend, do not look only at the base input price. Output tokens, cache writes, and thinking tokens all count — and Fable 5 and Opus 4.7+ use a newer tokenizer that produces up to ~30-35% more tokens for the same text.
+subcategory: Plans and Pricing
+sources:
+  - https://platform.claude.com/docs/en/about-claude/pricing
+  - https://platform.claude.com/docs/en/about-claude/models/overview
+last_verified: 2026-06-09

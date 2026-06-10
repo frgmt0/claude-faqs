@@ -1,0 +1,12 @@
+question: Does Fable 5 have different data retention rules? Can I opt out?
+answer: |
+  Anthropic's Fable 5 launch announcement describes a mandatory retention window for Mythos-class traffic for safety monitoring: data is retained for a limited period (reported as 30 days), is not used for training, and human access is logged. Community discussion has focused on the fact that this applies even to customers who otherwise have stricter retention arrangements, and that there is no opt-out — if that matters for your compliance posture, use Opus 4.8 instead, which follows the standard retention rules for your plan.
+
+  For your normal account-level retention and training questions (model-improvement setting, incognito chats, commercial no-training defaults), see the standard privacy docs — Fable's safety-monitoring retention is separate from those.
+
+  Because exact terms here are time-sensitive and partially documented, verify against the launch announcement and your enterprise agreement before relying on this for compliance decisions.
+subcategory: Safety and Alignment
+sources:
+  - https://www.anthropic.com/news/claude-fable-5-mythos-5
+  - https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data
+last_verified: 2026-06-09

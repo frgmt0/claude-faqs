@@ -1,0 +1,9 @@
+question: I deleted my account by accident. Can I recover it?
+answer: |
+  Anthropic's public help docs do not promise full self-serve recovery for deleted accounts. If this happened recently, contact Support immediately and ask whether recovery is still possible.
+
+  Do not assume waiting is harmless. For deletion, the important variable is usually timing and what data lifecycle has already started on Anthropic's side.
+subcategory: Security and Recovery
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

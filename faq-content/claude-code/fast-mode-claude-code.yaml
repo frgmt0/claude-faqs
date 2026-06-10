@@ -1,0 +1,10 @@
+question: What is fast mode in Claude Code and what does it cost?
+answer: |
+  Fast mode is a research preview that serves Claude Opus with significantly faster output — it does not downgrade you to a smaller model. Toggle it with `/fast` in Claude Code on supported Opus versions.
+
+  On the API it is priced at a premium: Opus 4.8 fast mode is $10/$50 per million tokens (vs $5/$25 standard). On subscriptions, faster output means you can burn through your session budget quicker, so pair it with sensible model/effort choices rather than leaving it on for everything.
+subcategory: Features and Modes
+sources:
+  - https://platform.claude.com/docs/en/about-claude/pricing
+  - https://code.claude.com/docs/en/changelog
+last_verified: 2026-06-09

@@ -1,0 +1,10 @@
+question: How does Constitutional AI work in Claude?
+answer: |
+  Anthropic's public explanation is that Constitutional AI trains models against a set of principles so they learn to be more helpful, honest, and harmless without relying only on human-written preference labels. The jailbreak-mitigation docs still reference Constitutional AI as part of why Claude is more resistant than many peers.
+
+  The practical takeaway is not that Claude becomes unbreakable. It means Claude is trained to reason against harmful requests more consistently than a raw next-token model would.
+subcategory: Safety and Governance
+sources:
+  - https://www.anthropic.com/news/constitutional-ai-harmlessness-from-ai-feedback
+  - https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks
+last_verified: 2026-03-10

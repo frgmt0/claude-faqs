@@ -1,0 +1,18 @@
+question: How do I install Claude Code on different operating systems?
+answer: |
+  The recommended install is now the native installer, which auto-updates:
+
+  - **macOS / Linux / WSL**: `curl -fsSL https://claude.ai/install.sh | bash`
+  - **Windows (PowerShell)**: `irm https://claude.ai/install.ps1 | iex`
+  - **Homebrew**: `brew install --cask claude-code`
+  - **WinGet**: `winget install Anthropic.ClaudeCode`
+  - Signed apt/dnf/apk repositories exist at downloads.claude.ai, and `npm install -g @anthropic-ai/claude-code` still works (it installs the same native binary; Node 18+).
+
+  Supported platforms: macOS 13+, Windows 10 1809+ (native — WSL no longer required), Ubuntu 20.04+/Debian 10+, Alpine 3.19+. There is also a desktop app if you prefer not to live in a terminal.
+
+  After install, run `claude doctor` to verify the environment. That one step saves a lot of time because it catches path, login, and shell issues before you start blaming the model.
+subcategory: Installation and Setup
+sources:
+  - https://code.claude.com/docs/en/setup
+  - https://code.claude.com/docs/en/desktop-quickstart
+last_verified: 2026-06-09

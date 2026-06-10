@@ -1,0 +1,9 @@
+question: How do I appeal an account ban?
+answer: |
+  There is no public "appeal form" article that Anthropic points to for standard users. Appeals go through the same support path as other account issues.
+
+  Use the support messenger, provide the exact account identifier, and ask for a review. If the account is organization-managed, the owner or admin may need to contact Anthropic on your behalf.
+subcategory: Bans and Suspensions
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

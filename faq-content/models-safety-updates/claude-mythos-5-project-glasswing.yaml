@@ -1,0 +1,10 @@
+question: What is Claude Mythos 5 and can I get access to it?
+answer: |
+  Claude Mythos 5 (`claude-mythos-5`) is the same model class as Fable 5 with safeguards lifted in certain domains. It is not generally available: access is invitation-only through Anthropic's Project Glasswing program, aimed at vetted cybersecurity partners and critical-infrastructure organizations.
+
+  For everyone else, Fable 5 is the public release of that capability class. There is no plan tier, waitlist checkbox, or API key setting that unlocks Mythos 5 — if someone on Discord claims otherwise, they are wrong or selling something. Anthropic has said a broader trusted-access program may come later; watch the official announcements.
+subcategory: Models and Capabilities
+sources:
+  - https://www.anthropic.com/news/claude-fable-5-mythos-5
+  - https://anthropic.com/glasswing
+last_verified: 2026-06-09

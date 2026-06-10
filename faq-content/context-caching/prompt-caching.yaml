@@ -1,0 +1,12 @@
+question: What is prompt caching and how do I use it?
+answer: |
+  Prompt caching lets you mark reusable prompt prefixes so Anthropic can avoid recomputing identical context on later requests. It is best for big static blocks like long instructions, policy docs, or large shared reference content.
+
+  Pricing as of June 2026: cache reads cost 0.1x the base input price; 5-minute cache writes cost 1.25x; 1-hour cache writes cost 2x. If your traffic has gaps longer than five minutes between calls, explicitly request the 1-hour TTL (`"cache_control": {"type": "ephemeral", "ttl": "1h"}`) — relying on the default 5-minute window is a common cause of surprise cache-write costs in agent workloads.
+
+  The official docs walk through cache breakpoints and explain how Anthropic reads from the longest cached prefix automatically. In practice, caching is worth it when your requests share a lot of stable context across calls.
+subcategory: Prompt Caching
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+  - https://platform.claude.com/docs/en/about-claude/pricing
+last_verified: 2026-06-09

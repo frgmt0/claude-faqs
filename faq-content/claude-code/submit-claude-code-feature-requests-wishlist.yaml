@@ -1,0 +1,11 @@
+question: How do I submit Claude Code feature requests or wishlist items?
+answer: |
+  Anthropic's docs point to `/bug` for reporting issues from Claude Code itself, and public GitHub issues are the obvious home for product feedback when Anthropic has opened that channel. For account-specific requests, use Support instead.
+
+  If you are writing a feature request, include the workflow that breaks today, not just the feature name. "Need persistent session profiles for support triage" is useful. "Please add profiles" is much less so.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/slash-commands
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+  - https://github.com/anthropics/claude-code/issues/new/choose
+last_verified: 2026-03-10

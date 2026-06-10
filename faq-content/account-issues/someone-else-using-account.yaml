@@ -1,0 +1,9 @@
+question: Someone else is using my account. What should I do?
+answer: |
+  Treat this as an account-security issue, not a normal login problem. Sign out of other sessions if you still can, change the email password attached to the account, and contact Support with a short timeline of suspicious activity.
+
+  If the billing method is attached to the compromised account, mention that immediately so the support team understands the financial risk, not just the login risk.
+subcategory: Security and Recovery
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

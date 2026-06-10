@@ -1,0 +1,16 @@
+question: Should I use the Claude Code desktop app or the CLI?
+answer: |
+  Both are official and share the same engine, so this is workflow preference, not capability religion.
+
+  - **Desktop app** (macOS/Windows): no terminal required, parallel session management, file/diff viewing, and a friendlier on-ramp. Get started at the desktop quickstart.
+  - **CLI**: full flag surface (`--model`, `--permission-mode`, print mode for scripting), works over SSH and in CI, and is the only option on Linux.
+
+  There is also **Claude Code on the web** (claude.ai/code) for cloud-hosted sessions, plus remote control features for monitoring local sessions from a phone or browser. If you live in an editor, the VS Code and JetBrains extensions wrap the same core.
+
+  Practical default: developers who script and SSH stay on the CLI; people who want sessions-as-windows take the desktop app.
+subcategory: Features and Modes
+sources:
+  - https://code.claude.com/docs/en/desktop-quickstart
+  - https://code.claude.com/docs/en/overview
+  - https://code.claude.com/docs/en/claude-code-on-the-web
+last_verified: 2026-06-09

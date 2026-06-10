@@ -1,0 +1,9 @@
+question: My account is temporarily suspended. How long will it last?
+answer: |
+  Anthropic does not publish a universal suspension timer because suspensions can happen for different reasons. Some are automated safety or verification checks, others are billing or access problems.
+
+  That means the only reliable answer is account-specific. Support can tell you whether the suspension is temporary, what needs to be fixed, and whether further verification is required.
+subcategory: Bans and Suspensions
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

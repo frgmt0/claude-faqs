@@ -1,0 +1,10 @@
+question: What is the best way to structure projects in Claude Code?
+answer: |
+  Anthropic's tutorials and memory docs point toward a simple structure: keep a project-level `CLAUDE.md` at the repo root, write down architecture constraints there, and let Claude learn the project from files instead of long repeated chat prompts.
+
+  The practical version is straightforward. Put project rules in `CLAUDE.md`, keep docs near the code they describe, and avoid hiding important instructions in one-off chats. Claude Code works best when the repo itself explains how it should be modified.
+subcategory: Getting Started and Structure
+sources:
+  - https://code.claude.com/docs/en/tutorials
+  - https://code.claude.com/docs/en/memory
+last_verified: 2026-03-10

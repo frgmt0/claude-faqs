@@ -1,0 +1,13 @@
+question: Why can't I log in to my account?
+answer: |
+  If Claude will not let you in, start with the simple checks first: make sure you are using the correct email, retry the login flow, and check spam or delayed inbox rules if the issue is a missing verification email. Anthropic's help center also points to the support messenger for cases where the normal login path is blocked.
+
+  If the problem is specific to Claude Code, the official troubleshooting guide recommends logging out, restarting the app, and forcing a clean login by removing the cached auth file if needed. That is a practical fix when the account itself is fine but the local auth state is stale.
+
+  If you still cannot log in after that, use the Help Center messenger and choose the "I can't login" path. That is the official route for account-access issues.
+subcategory: Access and Login
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+  - https://support.claude.com/en/articles/7993562-i-entered-my-email-address-but-i-haven-t-received-my-login-code
+  - https://code.claude.com/docs/en/troubleshooting
+last_verified: 2026-03-10

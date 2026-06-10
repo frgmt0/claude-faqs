@@ -1,0 +1,13 @@
+question: What's the latest Claude model available?
+answer: |
+  As of June 9, 2026, the newest model is **Claude Fable 5** (`claude-fable-5`), released that day as Anthropic's first generally available "Mythos-class" model — a capability tier above Opus. It is GA on the Claude API, AWS Bedrock, Google Vertex AI, and Microsoft Foundry, with a 1M token context window and up to 128K output tokens.
+
+  The rest of the current generation: Claude Opus 4.8 (May 2026), Claude Sonnet 4.6, and Claude Haiku 4.5. Claude Mythos 5 — the same model class as Fable 5 with fewer safeguards — exists but is invitation-only through Anthropic's Project Glasswing program, not something you can buy.
+
+  For current truth, trust the model overview and release notes, not an old screenshot or a Discord memory.
+subcategory: Models and Capabilities
+sources:
+  - https://platform.claude.com/docs/en/about-claude/models/overview
+  - https://www.anthropic.com/news/claude-fable-5-mythos-5
+  - https://platform.claude.com/docs/en/release-notes/api
+last_verified: 2026-06-09

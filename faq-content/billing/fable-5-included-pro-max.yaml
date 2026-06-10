@@ -1,0 +1,13 @@
+question: Is Fable 5 included in my Pro/Max plan, and what does it cost?
+answer: |
+  On the API, Fable 5 costs $10 per million input tokens and $50 per million output — about twice Opus 4.8. Adaptive thinking is always on, so agentic sessions consume tokens faster than you may be used to.
+
+  On claude.ai subscriptions, access at launch (June 9, 2026) is time-boxed: community reporting and Anthropic's launch materials describe Fable 5 drawing on plan limits during a launch window through late June 2026, after which it draws on usage credits at API rates, with bundled access possibly returning "as capacity permits." This is in flux — check **Settings → Usage** on claude.ai and the official announcement for the current state rather than trusting a cached answer, including this one.
+
+  Expect Fable usage to consume your limits noticeably faster than Opus either way.
+subcategory: Plans and Pricing
+sources:
+  - https://www.anthropic.com/news/claude-fable-5-mythos-5
+  - https://platform.claude.com/docs/en/about-claude/pricing
+  - https://support.claude.com/en/articles/12429409-manage-extra-usage-for-paid-claude-plans
+last_verified: 2026-06-09

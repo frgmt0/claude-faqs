@@ -1,0 +1,9 @@
+question: What's the cheapest database option for Claude Code projects?
+answer: |
+  Anthropic does not publish database cost rankings because that is outside the product docs. The better question is what is cheapest for your workload and failure tolerance, not what is cheapest in a vacuum.
+
+  For small projects, hosted Postgres, SQLite plus a simple deploy target, or a lightweight serverless database often beats overcomplicated early infrastructure. Claude Code can support any of those if the repo setup is sane.
+subcategory: Databases and App Architecture
+sources:
+  - https://code.claude.com/docs/en/tutorials
+last_verified: 2026-03-10

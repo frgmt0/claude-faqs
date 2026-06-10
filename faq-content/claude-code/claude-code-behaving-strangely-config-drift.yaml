@@ -1,0 +1,13 @@
+question: Claude Code is behaving strangely — could my skills, hooks, or CLAUDE.md be the problem?
+answer: |
+  Very likely yes. "Configuration drift" is the most common cause of perceived regressions: an instruction buried in CLAUDE.md, a hook rewriting tool calls, an MCP server flooding context, or a skill triggering when you did not expect it.
+
+  The clean diagnostic is `claude --safe-mode`, which starts a session with all customizations disabled (CLAUDE.md, plugins, skills, hooks, MCP servers). If the weird behavior disappears in safe mode, binary-search your config: re-enable pieces until it comes back. `/usage`'s per-category breakdown also shows which customizations are consuming context.
+
+  Before blaming the model, also make sure you are on a current version (`claude doctor` reports it) — several 2026 oddities were CLI bugs fixed within days.
+subcategory: Troubleshooting
+sources:
+  - https://code.claude.com/docs/en/changelog
+  - https://code.claude.com/docs/en/settings
+  - https://code.claude.com/docs/en/memory
+last_verified: 2026-06-09

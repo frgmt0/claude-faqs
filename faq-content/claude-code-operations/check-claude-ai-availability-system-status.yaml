@@ -1,0 +1,9 @@
+question: How do I check Claude.ai availability and system status?
+answer: |
+  Anthropic's official status source is [status.anthropic.com](https://status.anthropic.com). Use that first when the product feels broken in a way that affects multiple users or multiple devices.
+
+  That sounds obvious, but it matters. A lot of wasted debugging time comes from treating an outage like a personal environment bug.
+subcategory: Stability and Errors
+sources:
+  - https://status.anthropic.com
+last_verified: 2026-03-10

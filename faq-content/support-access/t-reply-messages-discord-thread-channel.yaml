@@ -1,0 +1,9 @@
+question: Why can't I reply to messages in a Discord thread or channel?
+answer: |
+  This is not usually an Anthropic-platform permission issue. It is almost always a Discord server role, channel override, thread lock, or integration-permission setting.
+
+  That means the fix is inside the community server, not inside Claude. If the bot can post elsewhere but not in that channel, have a server admin inspect the channel and role-level permissions first.
+subcategory: Community Access and Permissions
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

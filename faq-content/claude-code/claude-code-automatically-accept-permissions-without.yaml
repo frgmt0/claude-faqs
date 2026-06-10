@@ -1,0 +1,11 @@
+question: Can Claude Code automatically accept permissions without prompting?
+answer: |
+  Yes, but this is where you should slow down. Anthropic documents `permissions.allow`, `defaultMode`, and hook outputs that can bypass prompts in controlled ways. That means you can reduce repetitive confirmations for known-safe commands.
+
+  The tradeoff is obvious: every step you take toward auto-approval removes a safety checkpoint. The right compromise is to auto-allow boring, repeatable commands like lint or test runs and keep risky network, delete, or deployment actions behind explicit review.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/settings
+  - https://code.claude.com/docs/en/hooks
+  - https://code.claude.com/docs/en/security
+last_verified: 2026-03-10

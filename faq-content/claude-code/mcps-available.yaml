@@ -1,0 +1,10 @@
+question: What MCPs are available?
+answer: |
+  Anthropic documents how Claude Code connects to MCP servers, but it does not maintain one single official catalog of every community server worth using. The official docs focus more on how to connect and authenticate than on ranking a marketplace.
+
+  So the accurate answer is: Anthropic officially supports MCP integration, but discovery of specific servers is still mostly a community and ecosystem question.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/mcp
+  - https://code.claude.com/docs/en/overview
+last_verified: 2026-03-10

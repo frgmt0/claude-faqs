@@ -1,0 +1,9 @@
+question: Why do I have to pay separately for Claude API usage if I already have Pro or Max?
+answer: |
+  Anthropic treats Claude paid plans and the developer Console as separate products. A paid Claude subscription covers the chat product experience, while API access is billed through the developer platform.
+
+  That split surprises a lot of people the first time they move from chatting to building. But Anthropic is explicit about it: if you want both, you need both.
+subcategory: Plans and Pricing
+sources:
+  - https://support.claude.com/en/articles/9876003-i-subscribe-to-a-paid-claude-ai-plan-why-do-i-have-to-pay-separately-for-api-usage-on-console
+last_verified: 2026-03-10

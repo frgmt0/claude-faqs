@@ -24,3 +24,7 @@ id = "9659567c5d1b4e658eaa367878e33064"
 [[kv_namespaces]]
 binding = "FAQ_EMBEDDINGS"
 id = "254a1e734fa449beacff382ef26a1e3c"
+
+[[kv_namespaces]]
+binding = "FAQ_SUBMISSIONS"
+id = "370385f5f3b1417f907a49a89b28ac6c"

@@ -1,0 +1,9 @@
+question: Can I get real-time responses from Claude?
+answer: |
+  Yes. Anthropic's streaming docs are the official path for real-time token-by-token or chunk-by-chunk output. If your client supports SSE cleanly, Claude can feel much more responsive than waiting for one final blob.
+
+  The implementation detail that matters is buffering. If your proxy or framework buffers the response, streaming will look broken even when Claude is behaving correctly.
+subcategory: Streaming
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/streaming
+last_verified: 2026-03-10

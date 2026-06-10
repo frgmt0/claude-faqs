@@ -1,0 +1,10 @@
+question: How do I optimize context usage for long-running tasks?
+answer: |
+  The reliable pattern is to reduce repeated baggage. Keep prompts focused, summarize old state into compact notes, and avoid sending the same huge instructions on every turn when a memory file or cached prefix would do.
+
+  For developer workflows, this usually means: move stable instructions into a reusable system prompt or memory file, keep only the active diff in chat, and count tokens before expensive turns.
+subcategory: Context Windows and Tokens
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/context-windows
+  - https://platform.claude.com/docs/en/build-with-claude/token-counting
+last_verified: 2026-03-10

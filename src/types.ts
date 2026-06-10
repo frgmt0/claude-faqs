@@ -54,6 +54,7 @@ export interface Env {
   RATE_LIMITS: KVNamespace;     // Sliding window rate limit counters
   FAQ_API_KEYS: KVNamespace;    // API key -> { name, tier }
   FAQ_EMBEDDINGS: KVNamespace;  // Cached embedding vectors for semantic search
+  FAQ_SUBMISSIONS: KVNamespace; // Community FAQ suggestions awaiting review
   AI: Ai;                       // Cloudflare Workers AI binding
 }
 
@@ -61,6 +62,24 @@ export interface Env {
 export interface ApiKeyData {
   name: string;
   tier: "standard" | "premium";
+}
+
+// A community FAQ suggestion submitted through POST /submissions.
+// Stored in FAQ_SUBMISSIONS KV under `sub:{id}`.
+export interface FAQSubmission {
+  id: string;
+  status: "pending" | "accepted" | "rejected";
+  question: string;
+  suggested_answer?: string;
+  category_slug?: string;
+  source_urls: string[];
+  submitted_by?: string;       // e.g. a Discord username or user ID
+  submitted_via: string;       // API key name that made the submission
+  context?: string;            // where the question keeps coming up
+  created_at: string;
+  reviewed_at?: string;
+  reviewed_by?: string;
+  review_note?: string;
 }
 
 // Stored in RATE_LIMITS KV. resetAt is a Unix timestamp in milliseconds.

@@ -11,9 +11,10 @@
     "deploy": "bun run build:faq && wrangler deploy"
   },
   "devDependencies": {
-    "@types/node": "^24.3.0",
     "@cloudflare/workers-types": "^4.20260301.0",
+    "@types/node": "^24.3.0",
     "typescript": "^5.8.2",
-    "wrangler": "^4.6.0"
+    "wrangler": "^4.6.0",
+    "yaml": "^2.9.0"
   }
 }

@@ -1,0 +1,10 @@
+question: Why is Claude Code segfaulting on WSL?
+answer: |
+  Anthropic's troubleshooting guide does not publish a single "segfault root cause" article, but it does document the most common WSL class of failures: Windows Node/npm leaking into WSL, OS detection problems, and filesystem or networking penalties when the project lives under `/mnt/c`.
+
+  So if you are seeing segfaults or instability on WSL, check the boring path first: `which node`, `which npm`, whether your project is on the Linux filesystem, and whether `nvm` is loaded in your shell. Those are the known failure zones Anthropic actually documents.
+subcategory: Installation and Setup
+sources:
+  - https://code.claude.com/docs/en/troubleshooting
+  - https://code.claude.com/docs/en/quickstart
+last_verified: 2026-03-10

@@ -1,0 +1,16 @@
+question: Why is my weekly limit burning out in two or three days?
+answer: |
+  The usual suspects, in order of how often they turn out to be the cause:
+
+  1. **Running Opus or Fable for everything.** They consume quota several times faster than Sonnet. Use `/model` to drop to Sonnet for routine work.
+  2. **Context bloat per turn.** Big MCP servers, many plugins, and large skills all ride along on every request. Run `/usage` in Claude Code — recent versions break consumption down by category (skills, subagents, plugins, MCP servers) so you can see exactly what is eating the budget.
+  3. **Parallel agents and background sessions.** Subagent-heavy workflows multiply token use. There were also community-reported bugs in 2026 (excessive parallel subagent spawning, a CLI prompt-caching bug) that inflated usage before fixes shipped — keep Claude Code updated.
+  4. **Long-lived conversations.** Use `/clear` between tasks and `/compact` on long sessions instead of dragging full history into every turn.
+
+  If the numbers still look wrong after checking those, contact support through the in-product messenger with the `/usage` breakdown visible.
+subcategory: Capabilities and Limits
+sources:
+  - https://support.claude.com/en/articles/14552983-models-usage-and-limits-in-claude-code
+  - https://support.claude.com/en/articles/9797557-usage-limit-best-practices
+  - https://code.claude.com/docs/en/changelog
+last_verified: 2026-06-09

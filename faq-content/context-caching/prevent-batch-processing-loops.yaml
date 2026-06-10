@@ -1,0 +1,9 @@
+question: How do I prevent batch-processing loops?
+answer: |
+  Use idempotency in your own orchestration. Anthropic's docs stress meaningful unique `custom_id` values, regular status checks, and careful retry logic. That is the correct foundation.
+
+  If you are building a queue around batches, store your own submission state and refuse to enqueue the same job twice unless you can prove the first one failed.
+subcategory: Batch Processing
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/batch-processing
+last_verified: 2026-03-10

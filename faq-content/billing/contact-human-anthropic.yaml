@@ -1,0 +1,9 @@
+question: How do I contact a human at Anthropic?
+answer: |
+  Anthropic explicitly says it does not offer phone or live chat support for normal users. The route to a human is through the support messenger: start with Fin, then wait for team escalation if your issue needs human review.
+
+  For team-managed or enterprise accounts, owners and admins have broader support options than normal seat holders. If you are not an owner or admin, escalation may need to go through them.
+subcategory: Charges, Refunds, and Support
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

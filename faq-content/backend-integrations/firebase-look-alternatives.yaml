@@ -1,0 +1,10 @@
+question: Should I use Firebase or look for alternatives?
+answer: |
+  Anthropic does not publish an official "Firebase vs X" buyer's guide. So this is one of those questions where Claude can help you reason about tradeoffs, but Anthropic is not going to make the architecture choice for you.
+
+  Use Firebase when you want fast setup, auth, hosting, and a managed realtime stack. Look elsewhere when you need stronger SQL ergonomics, stricter relational modeling, or more predictable infrastructure control. Claude Code can work with either, but your product constraints should make the call.
+subcategory: Databases and App Architecture
+sources:
+  - https://code.claude.com/docs/en/tutorials
+  - https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/system-prompts
+last_verified: 2026-03-10

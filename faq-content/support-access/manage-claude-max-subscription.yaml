@@ -1,0 +1,11 @@
+question: How do I manage a Claude Max subscription?
+answer: |
+  Anthropic's Max-plan help article explains the plan tiers, while the cancel and upgrade articles explain where to change billing. In practice, managing Max means knowing where you bought it: web, iOS, or Android.
+
+  If it is web-based, use Settings > Billing. If it is mobile-store based, manage it through that platform. That split is the part users miss most often.
+subcategory: Subscription Edge Cases
+sources:
+  - https://support.claude.com/en/articles/11049741-what-is-the-max-plan
+  - https://support.claude.com/en/articles/8325617-how-do-i-cancel-my-paid-claude-subscription
+  - https://support.claude.com/en/articles/10177702-how-do-i-upgrade-my-claude-plan
+last_verified: 2026-03-10

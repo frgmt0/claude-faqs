@@ -1,0 +1,10 @@
+question: Can I integrate Claude with Telegram?
+answer: |
+  Yes. Anthropic's API is a standard developer API, so Telegram integration is just an application-layer build. Anthropic does not publish a special Telegram-only guide because none is required.
+
+  You need a Telegram bot on one side and a normal Claude API client on the other. Everything in between is your formatting, auth, and state-management logic.
+subcategory: Integration Questions
+sources:
+  - https://platform.claude.com/docs/en/api/messages
+  - https://platform.claude.com/docs/en/welcome
+last_verified: 2026-03-10

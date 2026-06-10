@@ -1,0 +1,11 @@
+question: What are the best workflows for Claude Code if I'm building locally on a remote Ubuntu box?
+answer: |
+  The cleanest setup is to keep Claude Code close to the code and the shell tools it needs. For a remote Ubuntu box, that usually means SSH into the machine, run Claude Code there, and keep the repo, test commands, and build tools local to that environment instead of bouncing files back and forth.
+
+  Anthropic's remote-control and workflow docs push the same general principle: make the environment explicit, keep project instructions in `CLAUDE.md`, and use reproducible commands. In practice, that means one repo, one `CLAUDE.md`, and a short list of common commands Claude can rely on without guessing.
+subcategory: Getting Started and Structure
+sources:
+  - https://code.claude.com/docs/en/remote-control
+  - https://code.claude.com/docs/en/tutorials
+  - https://code.claude.com/docs/en/memory
+last_verified: 2026-03-10

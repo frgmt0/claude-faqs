@@ -1,0 +1,15 @@
+question: What are the differences between Claude Opus, Sonnet, and Haiku?
+answer: |
+  The classic three-tier mental model still works, but as of June 2026 there is a tier above Opus. The current lineup on the API:
+
+  - **Claude Fable 5** (`claude-fable-5`): Anthropic's most capable widely released model, the first public "Mythos-class" release. 1M token context, up to 128K output, adaptive thinking always on. $10/$50 per million input/output tokens.
+  - **Claude Opus 4.8** (`claude-opus-4-8`): the flagship for hard reasoning and coding. 1M context, 128K output, $5/$25 per MTok.
+  - **Claude Sonnet 4.6** (`claude-sonnet-4-6`): the balanced high-performance model, close to Opus on coding at much lower cost. 1M context, $3/$15 per MTok.
+  - **Claude Haiku 4.5** (`claude-haiku-4-5`): the speed and cost play. 200K context, $1/$5 per MTok.
+
+  Practical guidance: Sonnet for most work, Opus for the hardest problems, Haiku for high-volume or latency-sensitive tasks, and Fable when you need top-end capability and are willing to pay for it. Note that Fable 5 and Opus 4.7+ use a newer tokenizer that produces up to roughly 30-35% more tokens for the same text, which matters when comparing costs.
+subcategory: Models and Capabilities
+sources:
+  - https://platform.claude.com/docs/en/about-claude/models/overview
+  - https://platform.claude.com/docs/en/about-claude/pricing
+last_verified: 2026-06-09

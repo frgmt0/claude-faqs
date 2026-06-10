@@ -1,0 +1,17 @@
+question: Is my code or data used for training?
+answer: |
+  It depends on your plan and a setting you control.
+
+  **Free/Pro/Max (including Claude Code on those plans):** training is governed by the "model improvement" privacy setting at claude.ai/settings/data-privacy-controls. If it is ON, chats and coding sessions can be used for training and retained (de-identified) for up to 5 years. If it is OFF, new conversations are not used for training and retention drops to 30 days. Incognito chats are never used for training regardless of the setting.
+
+  **Team, Enterprise, and the API:** no training on your content by default. Opt-in only happens through explicit feedback or the Development Partner Program.
+
+  **Claude Code specifics:** `/feedback` transcripts are retained for 5 years; local transcripts live in `~/.claude/projects/` for 30 days by default (`cleanupPeriodDays`). Telemetry can be disabled with `DISABLE_TELEMETRY` and related environment variables.
+
+  Check the product-specific data-usage page for your surface — one answer does not cover every plan.
+subcategory: Capabilities and Limits
+sources:
+  - https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training
+  - https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training
+  - https://code.claude.com/docs/en/data-usage
+last_verified: 2026-06-09

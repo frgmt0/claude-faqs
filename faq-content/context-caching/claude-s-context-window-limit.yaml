@@ -1,0 +1,10 @@
+question: What is Claude's context window limit?
+answer: |
+  For most modern Claude API usage, the standard context window discussed in Anthropic's docs is 200K tokens. That is the working baseline people usually mean when they ask about the context window.
+
+  The main thing to remember is that the window covers the full conversation state for the current turn, not just your latest message. Previous turns, files, tool blocks, and the upcoming output all compete for the same budget.
+subcategory: Context Windows and Tokens
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/context-windows
+  - https://platform.claude.com/docs/en/about-claude/models/overview
+last_verified: 2026-03-10

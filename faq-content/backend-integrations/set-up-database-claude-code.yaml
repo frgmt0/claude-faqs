@@ -1,0 +1,10 @@
+question: How do I set up a database with Claude Code?
+answer: |
+  Claude Code does not have a single official database wizard. The productive path is to give Claude a clear schema or migration target, the relevant config files, and the commands your stack already uses.
+
+  If you want Claude to inspect or query a live database safely, MCP is the official pattern for connecting external tools. That gives you a cleaner integration story than telling Claude to invent shell commands against production.
+subcategory: Databases and App Architecture
+sources:
+  - https://code.claude.com/docs/en/tutorials
+  - https://code.claude.com/docs/en/mcp
+last_verified: 2026-03-10

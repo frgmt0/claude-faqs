@@ -1,0 +1,9 @@
+question: Why do my emails to support@anthropic.com bounce?
+answer: |
+  Anthropic's official support guidance points users to the Help Center messenger, not to a general-purpose open email inbox for all support traffic. So if a direct email bounces, that is usually a workflow issue, not proof that support is unavailable.
+
+  Use the messenger inside the help flow instead. That is the documented path Anthropic wants users on for account, billing, and product issues.
+subcategory: Support Channels
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

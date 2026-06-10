@@ -1,0 +1,16 @@
+question: Which Claude models are being retired in 2026 and what should I migrate to?
+answer: |
+  Key retirement dates from the official deprecation page:
+
+  - **June 15, 2026**: `claude-sonnet-4-20250514` and `claude-opus-4-20250514` retire. Migrate to `claude-sonnet-4-6` and `claude-opus-4-8`.
+  - **August 5, 2026**: `claude-opus-4-1-20250805` retires. Migrate to `claude-opus-4-8`.
+  - Already retired: the Claude 3 and 3.5 generations (Claude 3 Opus, 3 Haiku, 3.5 Haiku, 3.7 Sonnet), except 3.5 Haiku lingering on Bedrock/Vertex.
+
+  To find what you are still calling, check the Usage page in the Console and export the CSV — old model IDs hiding in cron jobs and forgotten services are the usual surprise. Note that from the 4.6 generation on, model IDs are dateless (e.g. `claude-sonnet-4-6`) but still pinned snapshots.
+
+  Also relevant when migrating wrapper code: `temperature`, `top_p`, and `top_k` are deprecated on Opus 4.7 and later — setting non-default values returns a 400 error.
+subcategory: Models and Capabilities
+sources:
+  - https://platform.claude.com/docs/en/about-claude/model-deprecations
+  - https://platform.claude.com/docs/en/about-claude/models/overview
+last_verified: 2026-06-09

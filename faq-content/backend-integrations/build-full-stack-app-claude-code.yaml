@@ -1,0 +1,10 @@
+question: Can I build a full-stack app with Claude Code and Firebase?
+answer: |
+  Yes. Nothing in Anthropic's docs suggests Claude Code is limited to backend-only or frontend-only work. It operates on the codebase and tooling you provide.
+
+  The real constraint is discipline. Full-stack projects work best when you keep the app structure clear, document the architecture in `CLAUDE.md`, and avoid asking Claude to redesign the entire stack every session.
+subcategory: Databases and App Architecture
+sources:
+  - https://code.claude.com/docs/en/overview
+  - https://code.claude.com/docs/en/tutorials
+last_verified: 2026-03-10

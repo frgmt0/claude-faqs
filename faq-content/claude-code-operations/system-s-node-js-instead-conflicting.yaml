@@ -1,0 +1,10 @@
+question: How do I use my system's Node.js instead of a conflicting runtime?
+answer: |
+  Anthropic's troubleshooting guide is explicit that WSL problems often come from the wrong `node` or `npm` being picked up. The fix is to make sure `which node` and `which npm` resolve to Linux paths, not Windows ones, and to load `nvm` correctly if you use it.
+
+  In other words, do not fight path ambiguity. Make the shell resolve to one clear runtime and keep Windows and WSL Node installations from trampling each other.
+subcategory: Installation and Setup
+sources:
+  - https://code.claude.com/docs/en/troubleshooting
+  - https://code.claude.com/docs/en/quickstart
+last_verified: 2026-03-10

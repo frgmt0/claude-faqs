@@ -1,0 +1,10 @@
+question: How do I see what a subagent is doing and improve visibility?
+answer: |
+  Anthropic's subagent docs focus on configuring specialized helpers and controlling tool access. If you want better visibility, the best path is to make the subagent's remit specific and ask for explicit progress or evidence, not just "go work on this."
+
+  In other words, better visibility comes from better task shape. Give the agent a bounded task, ask for outputs that can be verified, and avoid vague multi-hour delegation.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/sub-agents
+  - https://code.claude.com/docs/en/slash-commands
+last_verified: 2026-03-10

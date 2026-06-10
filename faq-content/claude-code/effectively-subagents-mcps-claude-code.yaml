@@ -1,0 +1,10 @@
+question: How do I effectively use subagents and MCPs with Claude Code?
+answer: |
+  Subagents are best for specialized roles inside Claude Code: reviewer, debugger, migration helper, docs pass, and so on. MCP is the bridge to outside systems like tickets, docs, databases, and internal tooling.
+
+  The mistake to avoid is treating either of these as magic. Give each subagent a narrow job. For MCP, only connect tools that you genuinely want Claude to have access to. A smaller, well-understood tool surface is usually safer and more reliable.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/sub-agents
+  - https://code.claude.com/docs/en/mcp
+last_verified: 2026-03-10

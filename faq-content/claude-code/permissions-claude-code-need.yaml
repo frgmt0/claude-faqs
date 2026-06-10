@@ -1,0 +1,10 @@
+question: What permissions does Claude Code need?
+answer: |
+  Claude Code is designed around a permission system precisely because it can read files, run commands, and modify code. Anthropic's security docs describe read-only defaults and settings-based control over what can be allowed, denied, or escalated.
+
+  In practical terms, Claude needs only the permissions that match the job you want it to do. If it is auditing code, read access may be enough. If it is fixing tests, then file edits and selected shell commands make sense. Start narrow and expand only when necessary.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/security
+  - https://code.claude.com/docs/en/settings
+last_verified: 2026-03-10

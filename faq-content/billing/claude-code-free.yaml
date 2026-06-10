@@ -1,0 +1,11 @@
+question: Can I use Claude Code for free?
+answer: |
+  No. As of June 2026, the Free plan does not include Claude Code. You need Pro ($20/month, or $17/month billed annually), Max, Team, or Enterprise — or a Console (API) account where usage is billed per token. Claude Code also works through Bedrock, Vertex, and Microsoft Foundry for organizations set up that way.
+
+  Worth knowing: in April 2026 the pricing page briefly showed Claude Code missing from Pro, which caused a community panic. Anthropic reversed it within a day and described it as a limited signup test — Claude Code remains included with Pro.
+subcategory: Plans and Pricing
+sources:
+  - https://code.claude.com/docs/en/setup
+  - https://claude.com/pricing
+  - https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan
+last_verified: 2026-06-09

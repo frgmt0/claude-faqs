@@ -1,0 +1,11 @@
+question: How do I report a real Claude Code bug?
+answer: |
+  The official in-product path is `/bug`, which sends the conversation to Anthropic. For broader product issues or publicly reproducible problems, Anthropic's GitHub issue flow is also useful when available.
+
+  Good bug reports include the command you ran, the shell and OS, whether you were on macOS, Linux, WSL1, or WSL2, and whether `claude doctor` showed anything unusual. Anthropic's troubleshooting docs specifically ask for environment detail on Windows and WSL problems for exactly this reason.
+subcategory: Stability and Errors
+sources:
+  - https://code.claude.com/docs/en/slash-commands
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+  - https://github.com/anthropics/claude-code/issues/new/choose
+last_verified: 2026-03-10

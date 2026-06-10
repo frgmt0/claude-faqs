@@ -1,0 +1,10 @@
+question: How do I save workspace context between sessions?
+answer: |
+  Anthropic's official answer is memory files. Use `./CLAUDE.md` for shared project context and `~/.claude/CLAUDE.md` for your own cross-project preferences.
+
+  That is better than trying to keep a giant chat alive forever. Save decisions, coding standards, and common commands in memory files, then use `/memory` when you want to edit them during a session.
+subcategory: Getting Started and Structure
+sources:
+  - https://code.claude.com/docs/en/memory
+  - https://code.claude.com/docs/en/slash-commands
+last_verified: 2026-03-10

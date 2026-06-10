@@ -1,0 +1,10 @@
+question: How does Claude handle political or nuanced topics?
+answer: |
+  Anthropic does not publish a simple one-line political-behavior spec in the product docs, but the public system-prompt and guardrail materials make the direction clear: Claude is tuned to be helpful, avoid manipulative or unsafe behavior, and handle sensitive topics with more caution than pure engagement-optimization systems.
+
+  So if you are asking whether Claude will discuss politics, yes. If you are asking whether it will always do so without refusals or guardrails, no.
+subcategory: Safety and Governance
+sources:
+  - https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks
+  - https://platform.claude.com/docs/en/release-notes/system-prompts
+last_verified: 2026-03-10

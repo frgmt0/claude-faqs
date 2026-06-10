@@ -1,0 +1,14 @@
+question: How do I check how much usage I have left?
+answer: |
+  Two official surfaces:
+
+  - **In Claude Code**: run `/usage` to see your 5-hour session window and weekly limit, including a per-category breakdown (skills, subagents, plugins, MCP servers) in recent versions. `/status` shows plan and connection info; API-key users can use `/cost` for session spend.
+  - **On claude.ai**: Settings → Usage shows progress bars for your session and weekly limits.
+
+  Remember that claude.ai chats, Claude Code, Claude Desktop, and Cowork all draw from one shared allowance — if your terminal burned the budget, the web app feels it too.
+subcategory: Capabilities and Limits
+sources:
+  - https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
+  - https://support.claude.com/en/articles/14552983-models-usage-and-limits-in-claude-code
+  - https://code.claude.com/docs/en/changelog
+last_verified: 2026-06-09

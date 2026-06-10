@@ -1,0 +1,15 @@
+question: What are usage credits and how do I set them up or cap spending?
+answer: |
+  Usage credits (previously called "extra usage") let Pro and Max subscribers keep working past their included plan limits by paying standard API rates for the overflow. You enable them in **Settings → Usage** on claude.ai (web only if you subscribed on mobile). You can prepay, turn on auto-reload, and set a monthly spending cap; there is a $2,000/day redemption limit.
+
+  Two things to watch:
+
+  - Usage credits bill separately from your subscription, so auto-reload can produce charges you did not expect. Set the monthly cap when you turn it on.
+  - Your 5-hour session limits still reset as normal — credits are an overflow mechanism, not a limit increase.
+
+  In Claude Code, the related slash command was renamed from `/extra-usage` to `/usage-credits` in 2026, which is why old guides reference a command that no longer exists.
+subcategory: Plans and Pricing
+sources:
+  - https://support.claude.com/en/articles/12429409-manage-extra-usage-for-paid-claude-plans
+  - https://code.claude.com/docs/en/changelog
+last_verified: 2026-06-09

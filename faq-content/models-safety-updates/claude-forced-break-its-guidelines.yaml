@@ -1,0 +1,9 @@
+question: Can Claude be forced to break its guidelines?
+answer: |
+  Anthropic explicitly says jailbreaks and prompt injections are real risks across frontier models, including Claude. At the same time, the docs say Claude is more resistant to them because of its training and guardrail design.
+
+  So the correct answer is no, there is no guaranteed way to "force" Claude safely and reliably past its policies, but also no serious team should assume the model is impossible to manipulate. Anthropic's own guidance recommends layered safeguards.
+subcategory: Safety and Governance
+sources:
+  - https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks
+last_verified: 2026-03-10

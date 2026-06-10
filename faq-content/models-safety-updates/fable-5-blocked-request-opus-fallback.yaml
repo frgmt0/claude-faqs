@@ -1,0 +1,12 @@
+question: Why did Fable 5 refuse my request or switch me to Opus 4.8 mid-conversation?
+answer: |
+  Fable 5 ships with deliberately conservative misuse classifiers (notably around cybersecurity and biology) as a condition of releasing a Mythos-class model publicly. When a classifier trips, the request is handled by Opus 4.8 instead — Anthropic says this affects fewer than 5% of sessions, and you should see a notification when it happens.
+
+  Community reports from launch week include false positives on legitimate medical, biology-education, and low-level systems work. If you hit one: rephrase the request with more explicit benign context, or use Opus 4.8 directly for that workload. Anthropic has indicated classifier tuning is ongoing.
+
+  If you believe a refusal or fallback is a clear false positive, report it through the in-product support messenger — that is the feedback channel that reaches the team.
+subcategory: Safety and Alignment
+sources:
+  - https://www.anthropic.com/news/claude-fable-5-mythos-5
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-06-09

@@ -1,0 +1,10 @@
+question: Why did my batch job get stuck in a loop or run far more times than expected?
+answer: |
+  Anthropic's batch docs do not describe a "loop detector" that saves you from duplicate submission logic. If a batch appears to run repeatedly, that is usually an application bug, retry policy bug, or duplicate scheduler event on your side.
+
+  The official best practices help here: use unique `custom_id` values, dry-run the request shape through the normal Messages API first, and monitor batch status instead of blind re-submission.
+subcategory: Batch Processing
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/batch-processing
+  - https://platform.claude.com/docs/en/api/creating-message-batches
+last_verified: 2026-03-10

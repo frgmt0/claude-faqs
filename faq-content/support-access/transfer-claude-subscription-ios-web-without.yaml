@@ -1,0 +1,11 @@
+question: Can I transfer a Claude subscription from iOS to the web without paying twice?
+answer: |
+  Anthropic's help docs separate web billing from app-store billing, and they do not describe a one-click migration that ports remaining iOS subscription value directly into a web Max plan. That is why people run into double-billing anxiety here.
+
+  The safe path is to check your current billing rail first. If the plan is managed by Apple, cancel it there, confirm the end date, and then decide when to start the web plan. If timing matters or charges overlap, ask Support before switching rather than after.
+subcategory: Subscription Edge Cases
+sources:
+  - https://support.claude.com/en/articles/10177702-how-do-i-upgrade-my-claude-plan
+  - https://support.claude.com/en/articles/8325617-how-do-i-cancel-my-paid-claude-subscription
+  - https://support.claude.com/en/articles/11049741-what-is-the-max-plan
+last_verified: 2026-03-10

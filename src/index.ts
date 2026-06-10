@@ -1,10 +1,21 @@
 import { FAQ_DATA } from "./data";
-import { embeddingSearch, tagSearch } from "./search";
-import type { ApiKeyData, DiscordEmbed, Env, FAQEntry, RateLimitData } from "./types";
+import { embeddingSearch, tagSearch, type ScoredEntry } from "./search";
+import {
+  SUBMISSION_STATUSES,
+  listSubmissions,
+  newSubmissionId,
+  submissionKey,
+  validateSubmission,
+} from "./submissions";
+import type { ApiKeyData, DiscordEmbed, Env, FAQEntry, FAQSubmission, RateLimitData } from "./types";
 
 const DISCORD_COLOR = 0x7855fa; // Brand purple used in all Discord embeds
-const EMBEDDING_CACHE_KEY = "faq:embeddings:v1";
-const API_VERSION = "1.0.0";
+// Cache key is tied to the index build so a content deploy can never serve
+// embeddings computed for a different entry set.
+const EMBEDDING_CACHE_KEY = `faq:embeddings:v2:${FAQ_DATA.generated_at}`;
+const API_VERSION = "1.1.0";
+// Per-key cap on new submissions so a misbehaving bot can't flood the queue.
+const SUBMISSIONS_PER_DAY = 50;
 const AI_RUNNER = (ai: Ai) => ai as unknown as {
   run(model: string, input: unknown): Promise<unknown>;
 };
@@ -47,11 +58,14 @@ function summarizeEntry(entry: FAQEntry): object {
   };
 }
 
+// Truncates text to Discord's per-field character limits.
+function truncate(text: string, max: number): string {
+  return text.length > max ? `${text.slice(0, max - 3)}...` : text;
+}
+
 // Converts a FAQ entry into Discord's embed object format.
 function toDiscordEmbed(entry: FAQEntry): DiscordEmbed {
-  const description = entry.answer.length > 4096
-    ? `${entry.answer.slice(0, 4093)}...`
-    : entry.answer;
+  const description = truncate(entry.answer, 4096);
 
   const fields: DiscordEmbed["fields"] = [
     { name: "Category", value: entry.category, inline: true },
@@ -74,7 +88,7 @@ function toDiscordEmbed(entry: FAQEntry): DiscordEmbed {
   }
 
   return {
-    title: entry.question,
+    title: truncate(entry.question, 256),
     description,
     color: DISCORD_COLOR,
     fields,
@@ -138,7 +152,7 @@ async function checkRateLimit(
 // Computes or loads FAQ entry embeddings for semantic search.
 async function getEmbeddings(env: Env): Promise<number[][] | null> {
   const cached = await env.FAQ_EMBEDDINGS.get<number[][]>(EMBEDDING_CACHE_KEY, "json");
-  if (cached) return cached;
+  if (cached && cached.length === FAQ_DATA.entries.length) return cached;
 
   try {
     const texts = FAQ_DATA.entries.map((entry) =>
@@ -178,6 +192,17 @@ export default {
       ? path.slice("/v1".length)
       : path;
     const format = url.searchParams.get("format");
+
+    // Health check is unauthenticated so monitors and bot dashboards can
+    // probe availability without burning rate limit.
+    if (subPath === "/health") {
+      return cors(json({
+        status: "ok",
+        version: API_VERSION,
+        entry_count: FAQ_DATA.entry_count,
+        generated_at: FAQ_DATA.generated_at,
+      }));
+    }
 
     // API key is required for all requests.
     const authHeader = request.headers.get("authorization");
@@ -219,9 +244,12 @@ export default {
       return cors(new Response(response.body, { status: 429, headers }));
     }
 
-    function respond(data: object, status = 200): Response {
+    function respond(data: object, status = 200, options?: { noStore?: boolean }): Response {
       const response = json(data, status);
       const headers = new Headers(response.headers);
+      if (options?.noStore) {
+        headers.set("cache-control", "no-store");
+      }
       headers.set("x-ratelimit-remaining-minute", String(rl.minute.remaining));
       headers.set("x-ratelimit-remaining-day", String(rl.day.remaining));
       headers.set("x-ratelimit-reset-minute", new Date(rl.minute.resetAt).toISOString());
@@ -248,15 +276,122 @@ export default {
         },
         routes: {
           "GET /claude-faqs/v1/": "API metadata",
+          "GET /claude-faqs/v1/health": "Health check (no auth)",
           "GET /claude-faqs/v1/search?q=...&mode=tags|semantic": "Search FAQs",
           "GET|POST /claude-faqs/v1/ask": "Generate an answer from FAQ context",
           "GET /claude-faqs/v1/categories": "List categories",
           "GET /claude-faqs/v1/category/{slug}": "Category detail",
           "GET /claude-faqs/v1/entries": "List entry summaries",
           "GET /claude-faqs/v1/slugs": "List all slugs",
+          "POST /claude-faqs/v1/submissions": "Submit a FAQ suggestion",
+          "GET /claude-faqs/v1/submissions?status=pending": "List submissions (premium)",
+          "POST /claude-faqs/v1/submissions/{id}/review": "Accept or reject a submission (premium)",
           "GET /claude-faqs/v1/{slug}": "Fetch a full FAQ entry",
         },
       });
+    }
+
+    // Community submission queue. POST is open to any valid key so Discord
+    // bots can forward suggestions; review/list require a premium key.
+    if (subPath === "/submissions" && request.method === "POST") {
+      let body: object;
+      try {
+        body = await request.json() as object;
+      } catch {
+        return respond({
+          error: "Invalid JSON body",
+          schema: {
+            question: "string, required, 10-300 chars",
+            suggested_answer: "string, optional, max 4000 chars",
+            category: "string, optional, a category slug from /categories",
+            source_urls: "string[], optional, max 5 http(s) URLs",
+            submitted_by: "string, optional, max 100 chars (e.g. Discord username)",
+            context: "string, optional, max 1000 chars (where this keeps coming up)",
+          },
+        }, 400, { noStore: true });
+      }
+
+      const validCategorySlugs = new Set(FAQ_DATA.category_index.map((category) => category.slug));
+      const result = validateSubmission(body, validCategorySlugs);
+      if (!result.ok || !result.value) {
+        return respond({ error: "Validation failed", errors: result.errors }, 422, { noStore: true });
+      }
+
+      const quota = await updateWindow(env.RATE_LIMITS, apiKey, SUBMISSIONS_PER_DAY, 86_400_000, "submit-day");
+      if (!quota.allowed) {
+        return respond({
+          error: "Submission quota exceeded",
+          limit_per_day: SUBMISSIONS_PER_DAY,
+          resets_at: new Date(quota.resetAt).toISOString(),
+        }, 429, { noStore: true });
+      }
+
+      // Surface existing entries that already answer the question so bots
+      // can show them instead of filing a duplicate.
+      const similar = tagSearch(FAQ_DATA.entries, result.value.question, 3).map((item) => ({
+        slug: item.entry.slug,
+        question: item.entry.question,
+      }));
+
+      const submission: FAQSubmission = {
+        id: newSubmissionId(),
+        status: "pending",
+        ...result.value,
+        submitted_via: authenticatedKey.name,
+        created_at: new Date().toISOString(),
+      };
+
+      await env.FAQ_SUBMISSIONS.put(submissionKey(submission.id), JSON.stringify(submission));
+
+      return respond({ submission, similar_existing_entries: similar }, 201, { noStore: true });
+    }
+
+    if (subPath === "/submissions" && request.method === "GET") {
+      if (authenticatedKey.tier !== "premium") {
+        return respond({ error: "Forbidden", message: "Listing submissions requires a premium key." }, 403, { noStore: true });
+      }
+
+      const statusParam = url.searchParams.get("status");
+      const status = SUBMISSION_STATUSES.includes(statusParam as FAQSubmission["status"])
+        ? statusParam as FAQSubmission["status"]
+        : undefined;
+
+      const submissions = await listSubmissions(env.FAQ_SUBMISSIONS, status);
+      return respond({ count: submissions.length, status: status ?? "all", submissions }, 200, { noStore: true });
+    }
+
+    const reviewMatch = subPath.match(/^\/submissions\/([a-f0-9]+)\/review$/);
+    if (reviewMatch && request.method === "POST") {
+      if (authenticatedKey.tier !== "premium") {
+        return respond({ error: "Forbidden", message: "Reviewing submissions requires a premium key." }, 403, { noStore: true });
+      }
+
+      let body: { status?: string; note?: string };
+      try {
+        body = await request.json() as { status?: string; note?: string };
+      } catch {
+        return respond({ error: "Invalid JSON body", usage: "POST { \"status\": \"accepted\" | \"rejected\", \"note\": \"optional\" }" }, 400, { noStore: true });
+      }
+
+      if (body.status !== "accepted" && body.status !== "rejected") {
+        return respond({ error: "Validation failed", errors: [{ field: "status", message: "status must be \"accepted\" or \"rejected\"." }] }, 422, { noStore: true });
+      }
+
+      const key = submissionKey(reviewMatch[1]);
+      const submission = await env.FAQ_SUBMISSIONS.get<FAQSubmission>(key, "json");
+      if (!submission) {
+        return respond({ error: "Submission not found", id: reviewMatch[1] }, 404, { noStore: true });
+      }
+
+      submission.status = body.status;
+      submission.reviewed_at = new Date().toISOString();
+      submission.reviewed_by = authenticatedKey.name;
+      if (typeof body.note === "string" && body.note.trim()) {
+        submission.review_note = body.note.trim().slice(0, 1000);
+      }
+
+      await env.FAQ_SUBMISSIONS.put(key, JSON.stringify(submission));
+      return respond({ submission }, 200, { noStore: true });
     }
 
     // Search route.
@@ -269,7 +404,7 @@ export default {
       const mode = url.searchParams.get("mode") === "semantic" ? "semantic" : "tags";
       const limit = clamp(Number(url.searchParams.get("limit") || 5), 1, 10);
 
-      let results: FAQEntry[];
+      let results: ScoredEntry[];
       if (mode === "semantic") {
         const embeddings = await getEmbeddings(env);
         if (!embeddings) {
@@ -283,14 +418,17 @@ export default {
       }
 
       if (format === "discord") {
-        return respond({ query, mode, count: results.length, results: results.map(toDiscordEmbed) });
+        return respond({ query, mode, count: results.length, results: results.map((item) => toDiscordEmbed(item.entry)) });
       }
 
       return respond({
         query,
         mode,
         count: results.length,
-        results: results.map(summarizeEntry),
+        results: results.map((item) => ({
+          ...summarizeEntry(item.entry),
+          score: Math.round(item.score * 1000) / 1000,
+        })),
       });
     }
 
@@ -310,14 +448,15 @@ export default {
         return respond({ error: "Missing question", usage: "POST { \"question\": \"...\" } or GET /ask?q=..." }, 400);
       }
 
-      let context: FAQEntry[];
+      let scored: ScoredEntry[];
       const embeddings = await getEmbeddings(env);
       if (embeddings) {
         const qResult = await AI_RUNNER(env.AI).run("@cf/baai/bge-base-en-v1.5", { text: [question] }) as { data: number[][] };
-        context = embeddingSearch(qResult.data[0], embeddings, FAQ_DATA.entries, 3);
+        scored = embeddingSearch(qResult.data[0], embeddings, FAQ_DATA.entries, 3);
       } else {
-        context = tagSearch(FAQ_DATA.entries, question, 3);
+        scored = tagSearch(FAQ_DATA.entries, question, 3);
       }
+      const context = scored.map((item) => item.entry);
 
       if (!context.length) {
         return respond({
@@ -330,6 +469,32 @@ export default {
       const faqContext = context
         .map((entry, index) => `[FAQ ${index + 1}] ${entry.question}\n${entry.answer}`)
         .join("\n\n---\n\n");
+
+      const sources = context.map((entry) => ({
+        slug: entry.slug,
+        question: entry.question,
+        source_urls: entry.source_urls,
+      }));
+
+      // Builds the /ask response in either plain JSON or Discord embed form.
+      function askResponse(answer: string, fallback: boolean): Response {
+        if (format === "discord") {
+          const embed: DiscordEmbed = {
+            title: truncate(question as string, 256),
+            description: truncate(answer, 4096),
+            color: DISCORD_COLOR,
+            fields: [{
+              name: "Related FAQ entries",
+              value: truncate(sources.map((source) => `- \`${source.slug}\` ${source.question}`).join("\n"), 1024),
+              inline: false,
+            }],
+            footer: { text: "Claude Community FAQ API — generated answer, see sources" },
+          };
+          return respond(fallback ? { question, fallback, embed, sources } : { question, embed, sources });
+        }
+
+        return respond(fallback ? { question, answer, fallback, sources } : { question, answer, sources });
+      }
 
       try {
         const aiResult = await AI_RUNNER(env.AI).run("@cf/meta/llama-3.1-8b-instruct", {
@@ -346,26 +511,9 @@ export default {
           max_tokens: 700,
         }) as { response?: string };
 
-        return respond({
-          question,
-          answer: aiResult.response || context[0].answer,
-          sources: context.map((entry) => ({
-            slug: entry.slug,
-            question: entry.question,
-            source_urls: entry.source_urls,
-          })),
-        });
+        return askResponse(aiResult.response || context[0].answer, false);
       } catch {
-        return respond({
-          question,
-          answer: context[0].answer,
-          fallback: true,
-          sources: context.map((entry) => ({
-            slug: entry.slug,
-            question: entry.question,
-            source_urls: entry.source_urls,
-          })),
-        });
+        return askResponse(context[0].answer, true);
       }
     }
 
@@ -394,8 +542,10 @@ export default {
       let entries = FAQ_DATA.entries;
       const category = url.searchParams.get("category")?.toLowerCase();
       const subcategory = url.searchParams.get("subcategory")?.toLowerCase();
-      const limit = clamp(Number(url.searchParams.get("limit") || entries.length), 1, FAQ_DATA.entries.length);
-      const offset = Math.max(0, Number(url.searchParams.get("offset") || 0));
+      const rawLimit = Number(url.searchParams.get("limit") || entries.length);
+      const limit = clamp(Number.isFinite(rawLimit) ? rawLimit : entries.length, 1, FAQ_DATA.entries.length);
+      const rawOffset = Number(url.searchParams.get("offset") || 0);
+      const offset = Number.isFinite(rawOffset) ? Math.max(0, rawOffset) : 0;
 
       if (category) {
         entries = entries.filter((entry) =>
@@ -430,9 +580,9 @@ export default {
 
     const entryIndex = FAQ_DATA.slugs[slug];
     if (entryIndex === undefined) {
-      const suggestions = tagSearch(FAQ_DATA.entries, slug.replace(/-/g, " "), 3).map((entry) => ({
-        slug: entry.slug,
-        question: entry.question,
+      const suggestions = tagSearch(FAQ_DATA.entries, slug.replace(/-/g, " "), 3).map((item) => ({
+        slug: item.entry.slug,
+        question: item.entry.question,
       }));
 
       return respond({ error: "FAQ entry not found", slug, did_you_mean: suggestions }, 404);

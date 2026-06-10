@@ -1,0 +1,17 @@
+question: What's new in recent Claude releases?
+answer: |
+  As of June 9, 2026, the headline items in the official notes:
+
+  - **Claude Fable 5** (June 9): first generally available Mythos-class model, 1M context, 128K output, adaptive thinking always on.
+  - **Claude Opus 4.8** (late May): flagship Opus with 1M context by default, effort controls, and a fast-mode research preview.
+  - **Claude Code**: a steady stream of features through 2026 — desktop app, Claude Code on the web, remote control from phone/browser, sandboxing, plugins/skills marketplaces, auto memory, and a `/usage` command with per-category breakdowns. The changelog is the source of truth.
+  - **Model retirements**: Claude Sonnet 4 and Opus 4 retire June 15, 2026; Opus 4.1 retires August 5, 2026.
+
+  Anthropic maintains release notes for both apps and API — that is where you track model launches, caching changes, and app-level features.
+subcategory: Documentation and Release Tracking
+sources:
+  - https://platform.claude.com/docs/en/release-notes/api
+  - https://platform.claude.com/docs/en/release-notes/claude-apps
+  - https://code.claude.com/docs/en/changelog
+  - https://platform.claude.com/docs/en/about-claude/model-deprecations
+last_verified: 2026-06-09

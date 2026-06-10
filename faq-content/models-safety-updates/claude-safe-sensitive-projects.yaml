@@ -1,0 +1,11 @@
+question: Is Claude safe to use for sensitive projects?
+answer: |
+  Claude can be used for sensitive work, but only if you apply the normal controls you would expect for any external AI system: least privilege, scoped tool access, secret handling, human review, and a clear data policy.
+
+  Anthropic's docs are actually pretty sober here. They do not tell you to trust the model blindly. They tell you where the boundaries are and how to build guardrails around them.
+subcategory: Safety and Governance
+sources:
+  - https://code.claude.com/docs/en/security
+  - https://code.claude.com/docs/en/data-usage
+  - https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks
+last_verified: 2026-03-10

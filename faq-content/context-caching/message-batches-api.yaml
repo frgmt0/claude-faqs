@@ -1,0 +1,10 @@
+question: What is the Message Batches API for?
+answer: |
+  Anthropic's Message Batches API is for large async workloads where immediate responses are not required. The official docs say batches can process up to 100,000 requests or 256 MB total size and usually finish well under the 24-hour cap.
+
+  The point is cost and throughput. Anthropic's batch-processing guide describes batches as the cheaper, larger-scale path for evaluation, classification, and bulk generation work.
+subcategory: Batch Processing
+sources:
+  - https://platform.claude.com/docs/en/api/creating-message-batches
+  - https://platform.claude.com/docs/en/build-with-claude/batch-processing
+last_verified: 2026-03-10

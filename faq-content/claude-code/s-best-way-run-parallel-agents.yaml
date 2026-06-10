@@ -1,0 +1,10 @@
+question: What's the best way to run parallel agents or parallel workstreams safely?
+answer: |
+  Anthropic's docs cover both worktrees and subagents for parallelism. The safe pattern is to separate independent work physically or logically: use Git worktrees for truly separate code changes, and subagents for specialized analysis inside a single task.
+
+  Do not run a pile of agents against the same mutable files and hope merge conflicts sort themselves out. Parallelism helps when tasks are independent. It becomes self-inflicted damage when everything edits the same surface area.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/tutorials
+  - https://code.claude.com/docs/en/sub-agents
+last_verified: 2026-03-10

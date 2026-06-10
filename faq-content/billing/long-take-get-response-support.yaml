@@ -1,0 +1,9 @@
+question: How long does it take to get a response from support?
+answer: |
+  Anthropic's public support article explains how escalation works, but it does not publish a universal SLA for normal support tickets. What it does say is that Fin passes issues to the Product Support team when more investigation is needed and that the follow-up happens via email.
+
+  So the accurate answer is: there is no public guaranteed response window in the help article. For urgent billing problems, open the ticket with enough detail that it can be triaged cleanly on the first pass.
+subcategory: Charges, Refunds, and Support
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

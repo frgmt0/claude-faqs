@@ -1,0 +1,14 @@
+question: Can I run or monitor Claude Code from my phone or browser?
+answer: |
+  Yes, two official ways:
+
+  - **Claude Code on the web** (claude.ai/code): sessions run on Anthropic-managed cloud infrastructure. You can kick off work from the browser, and it integrates with your GitHub repos. See the web quickstart.
+  - **Remote control**: bridge a local terminal session to claude.ai and the Claude mobile apps, so you can watch and steer a session running on your own machine from elsewhere.
+
+  Both are documented under code.claude.com/docs. Usage counts against your plan limits either way. For automation (CI, scheduled work), prefer the documented GitHub Actions integration over screen-scraping any of these surfaces.
+subcategory: Features and Modes
+sources:
+  - https://code.claude.com/docs/en/claude-code-on-the-web
+  - https://code.claude.com/docs/en/remote-control
+  - https://code.claude.com/docs/en/github-actions
+last_verified: 2026-06-09

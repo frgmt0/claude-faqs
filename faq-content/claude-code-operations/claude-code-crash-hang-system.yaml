@@ -1,0 +1,9 @@
+question: Why does Claude Code crash or hang on my system?
+answer: |
+  Anthropic's troubleshooting page points to a few common causes: very large contexts, heavy resource usage, missing `ripgrep`, filesystem penalties on WSL, and stale auth state. That means "Claude Code crashed" is usually not actionable until you narrow it to install, auth, search, or system-resource behavior.
+
+  Use `claude doctor`, try a clean restart, and simplify the environment before assuming the problem is deep. Half the time the failure is local setup, not the agent itself.
+subcategory: Stability and Errors
+sources:
+  - https://code.claude.com/docs/en/troubleshooting
+last_verified: 2026-03-10

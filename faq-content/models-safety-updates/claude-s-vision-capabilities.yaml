@@ -1,0 +1,10 @@
+question: What are Claude's vision capabilities?
+answer: |
+  Anthropic's vision docs say Claude can analyze images and image-rich PDFs, reason over visual content, and combine image input with normal text instructions. Claude 3 and 4 family models support image understanding.
+
+  The important boundary is that Claude can analyze images, not generate them. If you need image generation, you need another tool.
+subcategory: Models and Capabilities
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/vision
+  - https://platform.claude.com/docs/en/about-claude/models/overview
+last_verified: 2026-03-10

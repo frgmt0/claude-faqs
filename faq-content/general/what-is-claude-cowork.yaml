@@ -1,0 +1,12 @@
+question: What is Claude Cowork and does it share my usage limits?
+answer: |
+  Cowork is Claude's agentic mode for non-coding work: it operates on your local files and folders from the desktop app to produce finished deliverables (documents, spreadsheets, research summaries) rather than chat replies. Think "Claude Code architecture, pointed at knowledge work."
+
+  It is included with paid plans (Pro and up) and draws from the same shared usage allowance as claude.ai chats and Claude Code — so a heavy Cowork session shows up in the same Settings → Usage bars as everything else.
+
+  If you are a developer, you still want Claude Code; Cowork is aimed at the people on your team who never open a terminal.
+subcategory: Products
+sources:
+  - https://claude.com/pricing
+  - https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
+last_verified: 2026-06-09

@@ -1,6 +1,10 @@
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+// Builds faq-index.json from the one-entry-per-file YAML layout:
+//   faq-content/<category>/_category.yaml  -> category display name
+//   faq-content/<category>/<slug>.yaml     -> one FAQ entry; filename is the slug
+import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { assignSlugs, parseMarkdownFile } from "../src/parser";
+import { parse } from "yaml";
+import { extractTags, extractUrls, slugify, type CategoryDoc, type FAQEntryDoc } from "../src/content";
 import type { FAQCategorySummary, FAQData, FAQEntry } from "../src/types";
 
 const FAQ_DIR = join(process.cwd(), "faq-content");
@@ -14,6 +18,10 @@ function getPacificDate(): string {
     month: "2-digit",
     day: "2-digit",
   }).format(new Date());
+}
+
+function titleCase(slug: string): string {
+  return slug.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 }
 
 function buildCategoryIndex(entries: FAQEntry[]): FAQCategorySummary[] {
@@ -54,28 +62,72 @@ function buildCategoryIndex(entries: FAQEntry[]): FAQCategorySummary[] {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
-const markdownFiles = readdirSync(FAQ_DIR)
-  .filter((file) => file.endsWith(".md"))
+const categoryDirs = readdirSync(FAQ_DIR)
+  .filter((name) => statSync(join(FAQ_DIR, name)).isDirectory())
   .sort((a, b) => a.localeCompare(b));
 
 const entries: FAQEntry[] = [];
-for (const file of markdownFiles) {
-  const content = readFileSync(join(FAQ_DIR, file), "utf8");
-  entries.push(...parseMarkdownFile(content, file));
-}
+const seenSlugs = new Map<string, string>();
 
-assignSlugs(entries);
+for (const dir of categoryDirs) {
+  const dirPath = join(FAQ_DIR, dir);
+  const categorySlug = dir;
 
-const pacificDate = getPacificDate();
-for (const entry of entries) {
-  if (!entry.last_verified_at || entry.last_verified_at.toLowerCase() === "auto") {
-    entry.last_verified_at = pacificDate;
+  let categoryName = titleCase(dir);
+  const categoryMetaPath = join(dirPath, "_category.yaml");
+  try {
+    const meta = parse(readFileSync(categoryMetaPath, "utf8")) as CategoryDoc;
+    if (meta?.name) categoryName = meta.name;
+  } catch {
+    // No _category.yaml: fall back to the title-cased directory name.
+  }
+
+  const entryFiles = readdirSync(dirPath)
+    .filter((file) => file.endsWith(".yaml") && !file.startsWith("_"))
+    .sort((a, b) => a.localeCompare(b));
+
+  for (const file of entryFiles) {
+    const filePath = join(dirPath, file);
+    const slug = file.replace(/\.yaml$/, "");
+    const doc = parse(readFileSync(filePath, "utf8")) as FAQEntryDoc;
+
+    if (!doc?.question || !doc?.answer) {
+      throw new Error(`${dir}/${file}: question and answer are required.`);
+    }
+
+    const existing = seenSlugs.get(slug);
+    if (existing) {
+      throw new Error(`Duplicate slug "${slug}" in ${dir}/${file} and ${existing}.`);
+    }
+    seenSlugs.set(slug, `${dir}/${file}`);
+
+    const answer = doc.answer.trim();
+    const subcategory = doc.subcategory?.trim() || "General";
+    const sourceUrls = new Set<string>(doc.sources ?? []);
+    for (const url of extractUrls(answer)) {
+      sourceUrls.add(url);
+    }
+
+    entries.push({
+      slug,
+      question: doc.question.trim(),
+      answer,
+      tags: doc.tags?.length ? doc.tags : extractTags(doc.question, subcategory, answer),
+      category: categoryName,
+      category_slug: categorySlug,
+      subcategory,
+      subcategory_slug: slugify(subcategory),
+      source_file: `${dir}/${file}`,
+      source_urls: [...sourceUrls],
+      last_verified_at: doc.last_verified || getPacificDate(),
+      answered_by: doc.answered_by,
+    });
   }
 }
 
 const categoryIndex = buildCategoryIndex(entries);
 const data: FAQData = {
-  version: "1.0.0",
+  version: "2.0.0",
   generated_at: new Date().toISOString(),
   generated_timezone: HQ_TIMEZONE,
   entry_count: entries.length,

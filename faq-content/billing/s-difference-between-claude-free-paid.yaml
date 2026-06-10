@@ -1,0 +1,16 @@
+question: What's the difference between Claude free and paid tiers?
+answer: |
+  As of June 2026:
+
+  - **Free ($0)**: chat on web/mobile/desktop, web search, memory, file creation, connectors/MCP, extended thinking. No Claude Code.
+  - **Pro ($20/month, $17/month billed annually)**: higher limits, **Claude Code**, Claude Cowork, unlimited projects, Research, model selection.
+  - **Max 5x ($100/month) / Max 20x ($200/month)**: 5x or 20x Pro usage per 5-hour session, higher output limits, early feature access, priority during high traffic.
+  - **Team** ($20-25/seat standard, $100-125/seat premium) and **Enterprise**: admin controls, SSO, no training on content by default.
+
+  Paid plans can also enable usage credits (pay-as-you-go at API rates) to keep working after hitting included limits. The free plan is fine for casual use; if you are coding heavily or relying on Claude daily, the paid plans are designed for that workload.
+subcategory: Plans and Pricing
+sources:
+  - https://claude.com/pricing
+  - https://support.claude.com/en/articles/11049741-what-is-the-max-plan
+  - https://support.claude.com/en/articles/12429409-manage-extra-usage-for-paid-claude-plans
+last_verified: 2026-06-09

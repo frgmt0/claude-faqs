@@ -1,0 +1,9 @@
+question: What's the support process for account or billing issues?
+answer: |
+  For paid Claude or Console users, the official support path is the support messenger. You log in, click your initials or name, choose "Get help," and start with Fin, Anthropic's support bot. If the issue needs a human, the conversation is escalated and someone follows up by email.
+
+  That means the best billing ticket is one that is already prepared for escalation. Include the exact charge date, amount, plan, and why you think the charge is wrong. Do not make support reconstruct the problem from scratch.
+subcategory: Charges, Refunds, and Support
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

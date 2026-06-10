@@ -1,0 +1,14 @@
+question: Is Claude getting dumber? It feels worse than last month.
+answer: |
+  This perception cycle recurs monthly, and the honest answer has three parts.
+
+  First, real changes do happen: defaults like effort level, system prompt size, and model routing have shifted over 2026, and a few genuine bugs (prompt-caching inflation, parallel-subagent overuse) briefly made things worse before fixes shipped. So the feeling is not always imaginary.
+
+  Second, most individual cases turn out to be local: configuration drift (CLAUDE.md, hooks, skills, MCP servers), longer and messier sessions, or comparing today's hard task against last week's easy one. In Claude Code, test with `claude --safe-mode` to rule out your own config, and check `/usage` to see what is riding along in context.
+
+  Third, when something does regress, the changelog and official release notes are where confirmed changes land — check those before assuming a silent model swap. If you can reproduce a clear regression, report it with the repro; vibes alone are not actionable.
+subcategory: Core Behavior
+sources:
+  - https://code.claude.com/docs/en/changelog
+  - https://platform.claude.com/docs/en/release-notes/api
+last_verified: 2026-06-09

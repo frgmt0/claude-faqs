@@ -1,0 +1,11 @@
+question: How do I update my payment method if my email account is disabled?
+answer: |
+  Normally, Anthropic expects you to update billing details through Settings > Billing. If you cannot access the account because the original email is gone, you are outside the normal self-serve flow.
+
+  The official support guidance is to contact Support from another email and identify the account you cannot access. Include the inaccessible email address, your plan, the last billing date you recognize, and enough payment detail for the team to validate ownership. If the subscription was started through Apple or Google, expect some billing actions to be redirected to the app-store platform that processed the purchase.
+subcategory: Access and Login
+sources:
+  - https://support.claude.com/en/articles/12386328-requesting-a-refund-for-a-paid-claude-plan
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+  - https://support.claude.com/en/articles/12997130-understanding-your-billing-address-and-tax-calculation
+last_verified: 2026-03-10

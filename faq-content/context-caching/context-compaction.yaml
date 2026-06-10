@@ -1,0 +1,9 @@
+question: What is context compaction?
+answer: |
+  Anthropic describes chat-style context as rolling forward over time, and in product conversations that often feels like compaction or older context becoming less useful. The exact implementation differs by product, but the practical effect is the same: long conversations degrade precision if you keep stuffing more into them.
+
+  If something must survive, write it down in a file or system instruction. Do not assume a huge chat transcript is the best place to preserve critical state.
+subcategory: Context Windows and Tokens
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/context-windows
+last_verified: 2026-03-10

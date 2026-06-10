@@ -1,0 +1,9 @@
+question: How does Claude compare to other models for coding?
+answer: |
+  Anthropic's docs understandably do not publish a "Claude versus every competitor" scorecard. What they do publish is where their own models are positioned: Opus for the hardest reasoning, Sonnet for strong general coding and agentic work, and Haiku for speed.
+
+  So the useful answer is not brand warfare. It is that Claude is strongest when you want long-context reasoning, solid writing, and a model that can work carefully over complex code and instructions.
+subcategory: Capabilities and Limits
+sources:
+  - https://platform.claude.com/docs/en/about-claude/models/overview
+last_verified: 2026-03-10

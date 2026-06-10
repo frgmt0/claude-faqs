@@ -1,7 +1,12 @@
 import type { FAQEntry } from "./types";
 
+export interface ScoredEntry {
+  entry: FAQEntry;
+  score: number;
+}
+
 // Tag-based keyword search. Each matching field adds to the score.
-export function tagSearch(entries: FAQEntry[], query: string, limit = 5): FAQEntry[] {
+export function tagSearch(entries: FAQEntry[], query: string, limit = 5): ScoredEntry[] {
   const terms = query
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, " ")
@@ -31,8 +36,7 @@ export function tagSearch(entries: FAQEntry[], query: string, limit = 5): FAQEnt
     })
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score || a.entry.question.localeCompare(b.entry.question))
-    .slice(0, limit)
-    .map((item) => item.entry);
+    .slice(0, limit);
 }
 
 // Cosine similarity between two vectors.
@@ -57,13 +61,12 @@ export function embeddingSearch(
   entryEmbeddings: number[][],
   entries: FAQEntry[],
   limit = 5,
-): FAQEntry[] {
+): ScoredEntry[] {
   return entries
     .map((entry, index) => ({
       entry,
       score: cosineSimilarity(queryEmbedding, entryEmbeddings[index]),
     }))
     .sort((a, b) => b.score - a.score)
-    .slice(0, limit)
-    .map((item) => item.entry);
+    .slice(0, limit);
 }

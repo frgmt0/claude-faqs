@@ -1,0 +1,10 @@
+question: How do I use streaming mode with Claude?
+answer: |
+  Anthropic's official streaming mode uses server-sent events. In the Messages API, you set `stream: true` and then process the incremental SSE events as they arrive.
+
+  This is the right choice when you want responsive UI updates, partial output rendering, or low-latency bot replies. It is not just a cosmetic feature. It changes how your client should parse and render output.
+subcategory: Streaming
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/streaming
+  - https://platform.claude.com/docs/en/api/messages
+last_verified: 2026-03-10

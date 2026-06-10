@@ -1,0 +1,9 @@
+question: What is the proper branching setup for Claude Code work?
+answer: |
+  Anthropic's workflow docs consistently favor small, reviewable units of work. That usually means a normal feature branch per task, not one giant long-lived branch where Claude is trying to juggle unrelated changes.
+
+  If you want Claude to stay sharp, keep branches scoped. One feature, one fix, one doc pass. The more unrelated drift you pack into a branch, the more likely review and context quality both degrade.
+subcategory: Branching, Parallelism, and Agents
+sources:
+  - https://code.claude.com/docs/en/tutorials
+last_verified: 2026-03-10

@@ -1,0 +1,9 @@
+question: How do I cancel my paid Claude subscription?
+answer: |
+  Anthropic's cancellation instructions depend on where you bought the plan. Web and desktop subscriptions are canceled in Settings > Billing. iOS and Android purchases are managed through their respective app-store billing flows.
+
+  The key line in the help article is that cancellation takes effect at the end of the current billing period. Canceling stops renewal; it does not usually cut off the paid term immediately.
+subcategory: Plans and Pricing
+sources:
+  - https://support.claude.com/en/articles/8325617-how-do-i-cancel-my-paid-claude-subscription
+last_verified: 2026-03-10

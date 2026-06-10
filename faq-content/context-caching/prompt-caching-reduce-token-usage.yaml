@@ -1,0 +1,10 @@
+question: How does prompt caching reduce token usage?
+answer: |
+  Caching does not make tokens disappear. It changes how repeated prefixes are priced and processed. If you keep resending the same long prompt prefix, Anthropic can reuse that cached work rather than charging you as if every request were brand new.
+
+  The win is biggest when your prompt has a large stable prefix and a small changing tail.
+subcategory: Prompt Caching
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+  - https://platform.claude.com/docs/en/release-notes/api
+last_verified: 2026-03-10

@@ -1,0 +1,11 @@
+question: How do I change my email address or recover an account tied to an old email?
+answer: |
+  Anthropic's help center is explicit that changing the email address on an existing account is not possible at this time. In practice, Anthropic routes account-recovery and subscription-access issues through the support messenger, and the refund article explicitly says that if you cannot access the email tied to the account, you should contact Support from another email and identify the inaccessible account.
+
+  That means the safe path is: gather the old email address, payment details, plan name, and any recent billing dates, then open support from a reachable email address. Ask for account access help first and billing changes second. That gives the team a clearer verification trail.
+subcategory: Access and Login
+sources:
+  - https://support.claude.com/en/articles/8452276-how-do-i-change-the-email-address-associated-with-my-account
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+  - https://support.claude.com/en/articles/12386328-requesting-a-refund-for-a-paid-claude-plan
+last_verified: 2026-06-09

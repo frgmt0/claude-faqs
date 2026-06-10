@@ -1,0 +1,9 @@
+question: Why am I suddenly getting 400 errors when I set temperature on the API?
+answer: |
+  `temperature`, `top_p`, and `top_k` are deprecated on Claude Opus 4.7 and later (including Opus 4.8 and Fable 5): sending a non-default value returns a 400 error. The parameters still exist in SDK type definitions, which is why your code compiles and then fails at runtime after a model-ID upgrade.
+
+  The fix is to omit those parameters entirely and steer output style through prompting. This bites a lot of older wrapper libraries and config-driven gateways, so if you maintain one, strip sampling params before forwarding requests to newer models.
+subcategory: Models and Capabilities
+sources:
+  - https://platform.claude.com/docs/en/about-claude/model-deprecations
+last_verified: 2026-06-09

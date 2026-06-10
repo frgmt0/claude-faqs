@@ -1,0 +1,16 @@
+question: How do usage limits work — sessions, weekly limits, and resets?
+answer: |
+  The structure as of June 2026:
+
+  - **5-hour sessions**: your session limit resets every five hours, starting from your first message in a window.
+  - **Weekly limits (Max plans)**: two separate weekly caps — one across all models, one for Sonnet specifically — each resetting 7 days after a session begins.
+  - **Shared pool**: claude.ai, Claude Code, Claude Desktop, and Cowork all count against the same allowance.
+  - **What you burn varies**: limits scale with conversation length and complexity, the model you pick (Opus and Fable consume far more than Sonnet/Haiku), effort level, and features like subagents and large MCP servers.
+
+  Anthropic intentionally does not publish exact message or token quotas per plan, so be skeptical of any FAQ or Reddit post quoting hard numbers. When you hit a limit: wait for the reset, upgrade, or enable usage credits. Note limits were adjusted upward several times in mid-2026, so older complaints about specific caps may no longer reflect reality.
+subcategory: Capabilities and Limits
+sources:
+  - https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
+  - https://support.claude.com/en/articles/11049741-what-is-the-max-plan
+  - https://support.claude.com/en/articles/9797557-usage-limit-best-practices
+last_verified: 2026-06-09

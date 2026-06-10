@@ -1,0 +1,9 @@
+question: What are the free-tier limits for the API?
+answer: |
+  Anthropic's API docs describe usage tiers and spend limits rather than a broad unlimited free tier. As of the current docs, tier advancement is based on deposits and monthly usage thresholds, and the rate-limit page explains the request and token ceilings for each tier.
+
+  If you are building anything real, treat the API as a paid product with defined spend and rate boundaries, not as a "maybe free if I stay small" service.
+subcategory: Plans and Pricing
+sources:
+  - https://platform.claude.com/docs/en/api/rate-limits
+last_verified: 2026-03-10

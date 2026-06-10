@@ -1,0 +1,9 @@
+question: Is there a dedicated support platform?
+answer: |
+  Yes. Anthropic's documented support surface is the support messenger launched from the Help Center or product UI. Fin, the support bot, handles intake and escalates to a human team when needed.
+
+  That is the main thing users should know: the official platform is not a public phone line or open inbox. It is the support messenger.
+subcategory: Support Channels
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

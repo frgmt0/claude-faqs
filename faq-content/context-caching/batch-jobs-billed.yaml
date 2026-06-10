@@ -1,0 +1,10 @@
+question: How are batch jobs billed?
+answer: |
+  Anthropic's batch docs say the Message Batches API is cost efficient and describe a 50% discount relative to the synchronous Messages path for supported work. That is the headline benefit most teams care about.
+
+  But cost control still matters. The same docs warn that high-throughput batch processing can overshoot a workspace spending limit slightly because many requests are in flight at once.
+subcategory: Batch Processing
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/batch-processing
+  - https://anthropic.com/pricing
+last_verified: 2026-03-10

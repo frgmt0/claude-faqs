@@ -1,0 +1,9 @@
+question: What are the security concerns people raise about Firebase?
+answer: |
+  This is not an Anthropic-specific security topic, so the official Claude docs will not give you Firebase hardening rules. The relevant Anthropic lesson is narrower: if Claude has credentials or deployment access, the repo and permission model should make it hard to misuse them.
+
+  For Firebase specifically, the common risk is not "Firebase is insecure by design." It is misconfigured rules, over-broad client access, and shipping admin credentials into the wrong environment.
+subcategory: Databases and App Architecture
+sources:
+  - https://code.claude.com/docs/en/security
+last_verified: 2026-03-10

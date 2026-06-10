@@ -1,0 +1,12 @@
+question: I'm getting an "access denied" message. What does that usually mean?
+answer: |
+  "Access denied" is not one single bug. It can mean the account is not entitled to a feature, the organization has restricted access, or an enterprise control like IP allowlisting is blocking the request.
+
+  If you are on an organization-managed plan, first check with the workspace owner or IT admin before assuming it is a broken account. Anthropic's IP allowlisting documentation makes clear that enterprise admins can block access based on network location.
+
+  If this is a personal plan and the error persists across web and app login, open the support messenger rather than guessing. You want Anthropic to confirm whether the issue is entitlement, auth state, or account-level restriction.
+subcategory: Access and Login
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+  - https://support.claude.com/en/articles/13200993-restrict-access-to-claude-with-ip-allowlisting
+last_verified: 2026-03-10

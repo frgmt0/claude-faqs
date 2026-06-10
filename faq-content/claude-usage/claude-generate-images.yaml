@@ -1,0 +1,7 @@
+question: Can Claude generate images?
+answer: |
+  No. Anthropic's vision docs are about image understanding, not image generation. Claude can analyze images you provide, but it does not generate new images for you.
+subcategory: Capabilities and Limits
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/vision
+last_verified: 2026-03-10

@@ -1,0 +1,18 @@
+question: Where can I find updated Claude documentation?
+answer: |
+  The docs reorganized across domains in late 2025/2026, so update your bookmarks:
+
+  - **platform.claude.com/docs** — API and developer docs (old `docs.anthropic.com` links 301-redirect here)
+  - **code.claude.com/docs** — Claude Code docs (old `docs.anthropic.com/en/docs/claude-code/...` links redirect here)
+  - **support.claude.com** — account, billing, and product help
+  - **claude.com/pricing** — plans and pricing (anthropic.com/pricing redirects here)
+  - **status.anthropic.com** — incidents and availability
+
+  If you are working from screenshots, copied answers, or Reddit lore instead of those sources, you are choosing stale information. If a tool or bot you maintain scrapes or deep-links docs, update it for the new domains even though redirects currently work.
+subcategory: Documentation and Release Tracking
+sources:
+  - https://platform.claude.com/docs/en/welcome
+  - https://code.claude.com/docs/en/overview
+  - https://support.claude.com
+  - https://status.anthropic.com
+last_verified: 2026-06-09

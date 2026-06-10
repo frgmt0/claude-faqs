@@ -1,0 +1,10 @@
+question: Why am I hitting token limits so quickly?
+answer: |
+  Usually because you are paying for the entire rolling conversation, not just the current prompt. Long chat history, large files, tool traces, and verbose outputs all count.
+
+  Anthropic's token-counting API exists for exactly this reason. If you need predictability, estimate first instead of guessing after the limit trips.
+subcategory: Context Windows and Tokens
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/context-windows
+  - https://platform.claude.com/docs/en/build-with-claude/token-counting
+last_verified: 2026-03-10

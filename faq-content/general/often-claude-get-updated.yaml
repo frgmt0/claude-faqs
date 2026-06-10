@@ -1,0 +1,10 @@
+question: How often does Claude get updated?
+answer: |
+  There is no fixed public cadence like "every second Tuesday." Anthropic ships updates when they are ready and records them in release notes.
+
+  If update timing matters to your workflow, watch release notes, not forum speculation.
+subcategory: General Questions About Claude
+sources:
+  - https://platform.claude.com/docs/en/release-notes/claude-apps
+  - https://platform.claude.com/docs/en/release-notes/api
+last_verified: 2026-03-10

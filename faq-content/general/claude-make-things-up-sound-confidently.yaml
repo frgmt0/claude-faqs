@@ -1,0 +1,10 @@
+question: Why does Claude make things up or sound confidently wrong?
+answer: |
+  Claude can still hallucinate. Anthropic's docs treat evaluation and grounding as necessary engineering work, not as optional polish.
+
+  So the right mental model is not that Claude lies on purpose. It is that language models can produce plausible but wrong output if the task is ambiguous or the model is not grounded in the right context.
+subcategory: General Questions About Claude
+sources:
+  - https://platform.claude.com/docs/en/test-and-evaluate/eval-tool
+  - https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
+last_verified: 2026-03-10

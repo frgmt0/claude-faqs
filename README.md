@@ -4,39 +4,63 @@ A community-maintained FAQ corpus for Claude, Claude Code, and Anthropic account
 
 ## What this repo contains
 
-- `faq-content/`: the markdown source of truth for FAQ answers
-- `scripts/build-faq-index.ts`: converts markdown into `faq-index.json`
-- `src/`: the Cloudflare Worker API, parser, search logic, and types
+- `faq-content/`: the YAML source of truth — one file per FAQ entry
+- `scripts/build-faq-index.ts`: compiles the YAML tree into `faq-index.json`
+- `scripts/check-faq-content.ts`: schema validation, run in CI
+- `src/`: the Cloudflare Worker API, search logic, and types
 - `docs/API.md`: API reference with request and response examples
 - `WALL_OF_FAME.md`: contributor recognition
 
 ## FAQ categories
 
-- [Account Issues](faq-content/account-issues-faqs.md)
-- [Billing and Plans](faq-content/billing-faq.md)
-- [Claude Code Workflows](faq-content/claude-code-faq.md)
-- [Claude Code Operations](faq-content/claude-code-operations-faq.md)
-- [Context, Caching, Streaming, and Batch](faq-content/context-caching-streaming-and-batch-faq.md)
-- [Backend and Integrations](faq-content/backend-and-integrations-faq.md)
-- [Models, Safety, and Updates](faq-content/models-safety-and-updates-faq.md)
-- [Support and Access](faq-content/support-and-access-faq.md)
-- [Claude Usage](faq-content/claude-usage.md)
-- [General Questions](faq-content/general-faq.md)
+- [Account Issues](faq-content/account-issues/)
+- [Billing and Plans](faq-content/billing/)
+- [Claude Code Workflows](faq-content/claude-code/)
+- [Claude Code Operations](faq-content/claude-code-operations/)
+- [Context, Caching, Streaming, and Batch](faq-content/context-caching/)
+- [Backend and Integrations](faq-content/backend-integrations/)
+- [Models, Safety, and Updates](faq-content/models-safety-updates/)
+- [Support and Access](faq-content/support-access/)
+- [Claude Usage](faq-content/claude-usage/)
+- [General Questions](faq-content/general/)
+
+## FAQ file format
+
+One entry per file: `faq-content/<category>/<slug>.yaml`. **The filename is the API slug**, so pick a short, stable, kebab-case name and don't rename files casually — bots cache slugs.
+
+```yaml
+question: What does Claude Max cost?
+answer: |
+  Markdown-capable answer text. Keep it practical and direct.
+
+  Multiple paragraphs are fine.
+subcategory: Plans and Pricing   # optional, defaults to "General"
+tags: [max, pricing]             # optional, auto-generated from text if omitted
+sources:                         # official URLs backing the answer
+  - https://support.claude.com/en/articles/11049741-what-is-the-max-plan
+last_verified: 2026-06-09        # YYYY-MM-DD; build stamps today if omitted
+answered_by: YourName            # optional contributor credit
+```
+
+Each category directory has a `_category.yaml` with the display name:
+
+```yaml
+name: Billing and Plans
+```
+
+New categories and entries are auto-discovered — you do not need to register files anywhere.
 
 ## Contributing a FAQ update
 
-1. Fork the repo.
-2. Create a branch.
-3. Add or edit markdown files inside `faq-content/`.
-4. Run the local checks.
-5. Open a pull request.
-
-Contributor workflow:
+1. Fork the repo and create a branch.
+2. Add or edit a `faq-content/<category>/<slug>.yaml` file.
+3. Run the local checks.
+4. Open a pull request.
 
 ```bash
 bun install
-bun run check:faq
-bun run build:faq
+bun run check:faq    # schema validation — CI runs this too
+bun run build:faq    # regenerates faq-index.json
 bun run typecheck
 ```
 
@@ -46,35 +70,12 @@ Optional local API preview:
 bun run dev
 ```
 
-## FAQ file format
-
-Each file is auto-discovered from `faq-content/`. You do not need to register new files anywhere.
-
-Use this structure:
-
-```md
-# Category Name
-
-## Subcategory Name
-
-### The question users actually ask
-
-Answered by: YourName
-Sources: https://docs.anthropic.com/... https://support.claude.com/...
-Last verified: auto
-Your answer here.
-```
-
-Notes:
-
-- `Answered by:` is optional.
-- `Sources:` is strongly recommended.
-- `Last verified:` is optional. If omitted or set to `auto`, the build script stamps the current date in Anthropic HQ timezone (`America/Los_Angeles`).
-- `general-faq.md` may use `## Question` headings directly.
-
 ## Suggesting new FAQs without a PR
 
-If you are not changing code directly, open a GitHub issue with the suggested question, where you saw it come up, and any official Anthropic source that helps answer it.
+Two options:
+
+- Open a GitHub issue with the suggested question, where you saw it come up, and any official Anthropic source that helps answer it.
+- If you run a bot with an API key, `POST /submissions` — see [docs/API.md](docs/API.md). Maintainers review the queue and turn accepted suggestions into entries.
 
 ## API usage
 
@@ -85,4 +86,4 @@ See [docs/API.md](docs/API.md) for endpoints, auth, response formats, and Discor
 Contributors and maintainers are recognized in [WALL_OF_FAME.md](WALL_OF_FAME.md).
 
 ---
-*This project is an independent community effort is not affiliated with Anthropic or Claude in any way.*
+*This project is an independent community effort and is not affiliated with Anthropic or Claude in any way.*

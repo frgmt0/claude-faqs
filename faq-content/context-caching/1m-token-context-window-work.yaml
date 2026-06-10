@@ -1,0 +1,10 @@
+question: How does the 1M token context window work?
+answer: |
+  Anthropic's docs say the 1M token window is currently a beta feature for Claude Sonnet 4, available to organizations in usage tier 4 or with custom limits. You enable it with the published beta header.
+
+  That means two things matter before you plan around it: your org tier must qualify, and long-context pricing changes once requests go beyond the standard 200K threshold. It is powerful, but it is not just "the normal model with five times more room for free."
+subcategory: Context Windows and Tokens
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/context-windows
+  - https://platform.claude.com/docs/en/release-notes/api
+last_verified: 2026-03-10

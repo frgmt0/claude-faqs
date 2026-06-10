@@ -1,0 +1,9 @@
+question: Why is my cache usage so high?
+answer: |
+  Usually because your application is writing or refreshing caches for large prefixes more often than you expected. The docs make clear that cache design matters. If your supposedly shared prefix keeps changing, cache efficiency collapses.
+
+  So high cache usage is often a prompt-design problem, not a mysterious billing problem. Find the moving parts and stop putting them inside the cached prefix.
+subcategory: Prompt Caching
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+last_verified: 2026-03-10

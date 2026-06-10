@@ -1,0 +1,10 @@
+question: Is the MCP spec changing? Will my MCP servers break?
+answer: |
+  MCP is now governed by an open foundation (Anthropic donated it in late 2025), and a new spec revision is in flight: the release candidate introduces a stateless protocol core, an Extensions framework, Tasks, and authorization hardening, with the final spec scheduled for July 28, 2026. There is also now a formal deprecation policy, which is good news for server maintainers.
+
+  Practical impact: existing servers keep working — the ecosystem moves through SDKs, and clients like Claude Code adopt revisions gradually. If you maintain a server, track the official MCP blog and bump your SDK when stable releases land. If you just *use* MCP servers in Claude Code, there is nothing you need to do.
+subcategory: Integrations
+sources:
+  - https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
+  - https://code.claude.com/docs/en/mcp
+last_verified: 2026-06-09

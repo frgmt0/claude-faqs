@@ -1,0 +1,10 @@
+question: Can I create session-type profiles for different use cases?
+answer: |
+  There is no official "profile switcher" button described in the docs, but the settings and memory model already give you most of what people mean by profiles. You can keep shared project settings in `.claude/settings.json`, local-only preferences in `.claude/settings.local.json`, and separate user defaults in `~/.claude/CLAUDE.md`.
+
+  So the practical answer is yes, but you build it from settings files and memory layers rather than from a dedicated profile UI.
+subcategory: Getting Started and Structure
+sources:
+  - https://code.claude.com/docs/en/settings
+  - https://code.claude.com/docs/en/memory
+last_verified: 2026-03-10

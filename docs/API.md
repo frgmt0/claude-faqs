@@ -2,7 +2,7 @@
 
 Base URL: `https://api.frgmt.xyz/claude-faqs/v1`
 
-This API serves the markdown FAQ corpus as structured JSON for bots and internal tools.
+This API serves the FAQ corpus (one YAML file per entry in `faq-content/`) as structured JSON for bots and internal tools. Current API version: `1.1.0`.
 
 ## Authentication
 
@@ -70,6 +70,10 @@ Field notes:
 ### `GET /`
 
 Returns API metadata and the route map.
+
+### `GET /health`
+
+Unauthenticated health check for monitors and bot dashboards. Returns status, API version, entry count, and the index build timestamp. Does not count against rate limits.
 
 ### `GET /categories`
 
@@ -182,11 +186,14 @@ Default response shape:
       "last_verified_at": "2026-03-10",
       "source_urls": [
         "https://support.claude.com/en/articles/12386328-requesting-a-refund-for-a-paid-claude-plan"
-      ]
+      ],
+      "score": 0.872
     }
   ]
 }
 ```
+
+Each result includes a `score` (relevance for `tags` mode, cosine similarity for `semantic` mode). Scores are comparable within one response, not across modes.
 
 ### `GET /{slug}`
 
@@ -270,6 +277,60 @@ Response shape:
 ```
 
 If the LLM helper is unavailable, the API falls back to the best FAQ match and sets `fallback: true`.
+
+`?format=discord` is also supported on `/ask`: the response carries an `embed` object (instead of `answer`) plus the same `sources` array, ready to send as a Discord embed.
+
+## Submissions
+
+A structured queue so bots and integrations can suggest new FAQ entries without GitHub. Submissions are reviewed by maintainers; accepted ones become `faq-content/<category>/<slug>.yaml` entries.
+
+### `POST /submissions`
+
+Open to any valid API key. Body schema:
+
+| Field | Type | Rules |
+| --- | --- | --- |
+| `question` | string | **required**, 10–300 chars |
+| `suggested_answer` | string | optional, max 4000 chars |
+| `category` | string | optional, must be a category slug from `/categories` |
+| `source_urls` | string[] | optional, max 5 http(s) URLs |
+| `submitted_by` | string | optional, max 100 chars (e.g. Discord username or user ID) |
+| `context` | string | optional, max 1000 chars — where the question keeps coming up |
+
+```bash
+curl -X POST \
+  -H "Authorization: Bearer cfaq_your_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question": "Why does /usage show different numbers than claude.ai settings?",
+    "category": "claude-usage",
+    "submitted_by": "discorduser#1234",
+    "context": "Asked three times this week in #claude-code-help"
+  }' \
+  https://api.frgmt.xyz/claude-faqs/v1/submissions
+```
+
+Responses:
+
+- `201` — `{ "submission": { "id": "...", "status": "pending", ... }, "similar_existing_entries": [...] }`. Show `similar_existing_entries` to the user — the question may already be answered.
+- `422` — `{ "error": "Validation failed", "errors": [{ "field": "question", "message": "..." }] }`. Per-field errors are written so bots can surface them directly (e.g. in an ephemeral Discord reply).
+- `429` — per-key submission quota exceeded (50/day, separate from regular rate limits).
+
+### `GET /submissions?status=pending` (premium)
+
+Lists submissions, newest first. `status` filters by `pending`, `accepted`, or `rejected`; omit for all.
+
+### `POST /submissions/{id}/review` (premium)
+
+```bash
+curl -X POST \
+  -H "Authorization: Bearer cfaq_admin_key" \
+  -H "Content-Type: application/json" \
+  -d '{"status": "accepted", "note": "good catch, writing it up"}' \
+  https://api.frgmt.xyz/claude-faqs/v1/submissions/1a2b3c4d5e6f7a8b/review
+```
+
+Sets `status` to `accepted` or `rejected` and records the reviewer and timestamp.
 
 ## Error responses
 

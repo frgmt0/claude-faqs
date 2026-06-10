@@ -1,0 +1,9 @@
+question: Should AI development be governed or regulated?
+answer: |
+  Anthropic clearly positions safety and governance as core parts of its model-development philosophy. The official docs are not a policy manifesto, but the company is not arguing for a completely ungoverned frontier-AI ecosystem either.
+
+  For this FAQ, the clean answer is that Anthropic's public posture is pro-safety, pro-guardrails, and supportive of stronger governance than "ship first and hope later."
+subcategory: Safety and Governance
+sources:
+  - https://www.anthropic.com/news/constitutional-ai-harmlessness-from-ai-feedback
+last_verified: 2026-03-10

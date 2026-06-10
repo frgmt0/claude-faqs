@@ -1,0 +1,10 @@
+question: Why does Claude ignore my instructions sometimes?
+answer: |
+  Usually because the instruction was vague, conflicted with other instructions, collided with a safety boundary, or was buried inside too much context. Anthropic's prompting guides consistently reward clarity, specificity, and good structure.
+
+  If you want better compliance, tighten the task, define the output shape, and remove conflicting asks. Claude is much more reliable when the prompt is coherent.
+subcategory: General Questions About Claude
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
+  - https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks
+last_verified: 2026-03-10

@@ -1,0 +1,10 @@
+question: What payment or identity tools work well with Claude?
+answer: |
+  Anthropic's API is transport-agnostic here. Claude does not require a specific billing stack or identity provider. The official docs focus on API calls, tool use, and MCP integration points, not on endorsing one payments vendor or auth provider.
+
+  So the right answer is the boring one: use the tools your product can operate well. Claude integrates through APIs and tools, not through a hidden preference for one SaaS vendor.
+subcategory: Integration Questions
+sources:
+  - https://platform.claude.com/docs/en/api/messages
+  - https://code.claude.com/docs/en/mcp
+last_verified: 2026-03-10

@@ -1,0 +1,10 @@
+question: What's the best way to report bugs?
+answer: |
+  For Claude Code specifically, Anthropic documents `/bug` as the in-product reporting path. For account-specific or product-access issues, the support messenger is the right route.
+
+  The best report is reproducible. Include timestamps, platform, the exact error text, and whether the issue reproduces in a fresh session.
+subcategory: Support Channels
+sources:
+  - https://code.claude.com/docs/en/slash-commands
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

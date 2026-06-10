@@ -1,0 +1,9 @@
+question: My account was banned. What can I do?
+answer: |
+  Anthropic does not publish a public, step-by-step appeal playbook for every ban scenario. The practical path is to contact Support through the Help Center and ask for clarification or review.
+
+  Keep the message clean and factual. Include the account email, when the ban appeared, whether you were using Claude.ai, Claude Code, or the API, and any recent billing or security events that may help support understand what happened. Long emotional writeups do not help nearly as much as a tight timeline.
+subcategory: Bans and Suspensions
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

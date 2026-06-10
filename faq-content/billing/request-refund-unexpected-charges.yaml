@@ -1,0 +1,12 @@
+question: How do I request a refund for unexpected charges?
+answer: |
+  Anthropic's official process is through the in-product support messenger. Log in, open "Get help," choose the refund flow, and follow the prompts that check eligibility.
+
+  The important limit is that Anthropic says payments are generally non-refundable unless the terms or local law make them refundable. So the fastest path is not a vague complaint. It is a precise request with dates, charge amounts, and the reason you believe the charge was unintended.
+
+  If your subscription was purchased on iOS, Anthropic says Apple handles that refund path. Android purchases have their own support path as well.
+subcategory: Charges, Refunds, and Support
+sources:
+  - https://support.claude.com/en/articles/12386328-requesting-a-refund-for-a-paid-claude-plan
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

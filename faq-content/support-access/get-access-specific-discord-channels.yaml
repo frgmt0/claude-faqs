@@ -1,0 +1,9 @@
+question: How do I get access to specific Discord channels?
+answer: |
+  Anthropic does not control your community's Discord permissions. Channel access is handled by the Discord server's own roles, verification flows, and moderation settings.
+
+  So the right answer is operational, not technical: ask the server admins what role or verification gate unlocks that channel.
+subcategory: Community Access and Permissions
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

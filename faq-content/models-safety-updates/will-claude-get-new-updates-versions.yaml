@@ -1,0 +1,11 @@
+question: When will Claude get new updates or versions?
+answer: |
+  Anthropic does not publish a fixed public release calendar for model launches. What it does publish is release notes for apps, API changes, and system prompt updates.
+
+  So if someone asks "when is the next one coming," the honest answer is that Anthropic announces updates when they are ready. The official thing to watch is release notes, not rumor threads.
+subcategory: Models and Capabilities
+sources:
+  - https://platform.claude.com/docs/en/release-notes/api
+  - https://platform.claude.com/docs/en/release-notes/claude-apps
+  - https://platform.claude.com/docs/en/release-notes/system-prompts
+last_verified: 2026-03-10

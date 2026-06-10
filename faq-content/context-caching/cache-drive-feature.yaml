@@ -1,0 +1,9 @@
+question: What is the cache drive feature?
+answer: |
+  Anthropic's public prompt-caching docs do not describe a feature literally named "cache drive." If you heard that term in community conversation, it is not a documented first-class product concept in the current official docs.
+
+  The official concepts to anchor on are cache breakpoints, cache reads, cache writes, and cache TTL.
+subcategory: Prompt Caching
+sources:
+  - https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+last_verified: 2026-03-10

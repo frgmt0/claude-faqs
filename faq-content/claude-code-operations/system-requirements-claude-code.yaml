@@ -1,0 +1,10 @@
+question: What are the system requirements for Claude Code?
+answer: |
+  The official baseline is simple: Node.js 18 or newer, plus either a Claude.ai account or Anthropic Console account depending on how you are logging in. Beyond that, the real requirement is a sane development shell with standard tooling available.
+
+  If you are on Windows, Anthropic's setup guidance currently assumes WSL for the main experience. If you are on Linux or macOS, the normal shell environment is the intended path.
+subcategory: Installation and Setup
+sources:
+  - https://code.claude.com/docs/en/overview
+  - https://code.claude.com/docs/en/quickstart
+last_verified: 2026-03-10

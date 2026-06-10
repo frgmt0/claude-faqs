@@ -1,0 +1,13 @@
+question: What does Claude Max cost?
+answer: |
+  As of June 2026, Max comes in two web tiers: **Max 5x at $100/month** and **Max 20x at $200/month** — 5x or 20x Pro usage per 5-hour session. Anthropic's help center notes that mobile pricing may differ from web pricing.
+
+  That detail matters because people often compare an iOS subscription to a web subscription as if they are interchangeable. Anthropic does not present them as identical billing rails.
+
+  Max plans also carry two weekly limits (one across all models, one for Sonnet specifically) and can enable usage credits to keep going past included limits at API rates.
+subcategory: Plans and Pricing
+sources:
+  - https://support.claude.com/en/articles/11049741-what-is-the-max-plan
+  - https://claude.com/pricing
+  - https://support.claude.com/en/articles/12429409-manage-extra-usage-for-paid-claude-plans
+last_verified: 2026-06-09

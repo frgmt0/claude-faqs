@@ -1,0 +1,9 @@
+question: How do I reach a human at Anthropic support?
+answer: |
+  You start with the support messenger and Fin. If the issue needs deeper investigation, Anthropic escalates it and the human follow-up comes by email.
+
+  There is no normal phone-support path in the official help article. If someone promises a different route, ask for the official source.
+subcategory: Support Channels
+sources:
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10

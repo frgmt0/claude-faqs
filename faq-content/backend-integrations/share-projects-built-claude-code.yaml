@@ -1,0 +1,10 @@
+question: How do I share projects built with Claude Code?
+answer: |
+  Anthropic's workflow docs point toward normal developer collaboration patterns: branches, pull requests, CI, and project instructions in `CLAUDE.md`. Claude does not change the fundamental sharing model.
+
+  If you want other people to build on top of your project, the highest-leverage thing you can do is ship a repo that explains itself. Good docs beat clever prompts every time.
+subcategory: Integration Questions
+sources:
+  - https://code.claude.com/docs/en/github-actions
+  - https://code.claude.com/docs/en/tutorials
+last_verified: 2026-03-10

@@ -1,0 +1,10 @@
+question: What does "upstream connect error or disconnect/reset before headers" usually mean?
+answer: |
+  That message usually points to a service-edge or network-path failure rather than a normal prompt problem. Anthropic does not have a public help article that fully decodes every reverse-proxy error string, so the best official move is to check the status page and then report it if the issue persists.
+
+  If the error appears during a known incident window, do not waste time trying ten local fixes in a row. Wait for the platform to recover or route around the failing path.
+subcategory: Stability and Errors
+sources:
+  - https://status.anthropic.com
+  - https://support.claude.com/en/articles/9015913-how-to-get-support
+last_verified: 2026-03-10
